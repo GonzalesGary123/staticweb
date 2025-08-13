@@ -5,27 +5,27 @@
 /* Custom component classes */
 @layer components {
   .btn-primary {
-    @apply bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-semibold py-3 px-6 rounded-full transition-all duration-200 transform hover:scale-105 hover:shadow-lg shadow-md;
+    @apply bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-neon-blue shadow-neon-blue/50 border border-primary-400/30;
   }
   
   .btn-secondary {
-    @apply bg-gradient-to-r from-secondary-500 to-secondary-600 hover:from-secondary-600 hover:to-secondary-700 text-white font-semibold py-3 px-6 rounded-full transition-all duration-200 transform hover:scale-105 hover:shadow-lg shadow-md;
+    @apply bg-gradient-to-r from-secondary-500 to-secondary-600 hover:from-secondary-600 hover:to-secondary-700 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-neon-pink shadow-neon-pink/50 border border-secondary-400/30;
   }
   
   .btn-accent {
-    @apply bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white font-semibold py-3 px-6 rounded-full transition-all duration-200 transform hover:scale-105 hover:shadow-lg shadow-md;
+    @apply bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-neon-green shadow-neon-green/50 border border-accent-400/30;
   }
   
   .btn-outline {
-    @apply border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white font-semibold py-3 px-6 rounded-full transition-all duration-200 transform hover:scale-105;
+    @apply border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-neon-blue;
   }
   
   .card-glass {
-    @apply dark:bg-white/10 bg-white/80 backdrop-blur-xl dark:border-white/20 border-gray-200 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-200;
+    @apply dark:bg-black/40 bg-white/90 backdrop-blur-xl dark:border-primary-400/30 border-primary-400/20 rounded-2xl shadow-cyber-glow hover:shadow-hologram transition-all duration-300 border-2;
   }
   
   .card-modern {
-    @apply bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-1;
+    @apply bg-gradient-to-br from-dark-900 to-dark-800 rounded-2xl shadow-matrix hover:shadow-cyber-glow transition-all duration-300 transform hover:-translate-y-2 border border-primary-400/20;
   }
   
   .text-gradient-primary {
@@ -38,6 +38,27 @@
   
   .container-custom {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Gaming-specific components */
+  .game-card {
+    @apply bg-gradient-to-br from-dark-900/80 to-dark-800/80 backdrop-blur-xl border-2 border-primary-400/30 rounded-2xl shadow-cyber-glow hover:shadow-hologram transition-all duration-300 transform hover:scale-105;
+  }
+  
+  .neon-border {
+    @apply border-2 border-primary-400/50 shadow-neon-blue/30;
+  }
+  
+  .cyber-button {
+    @apply bg-gradient-to-r from-primary-500 to-primary-400 text-black font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-neon-blue border border-primary-400/50;
+  }
+  
+  .matrix-bg {
+    @apply bg-gradient-to-br from-green-900/20 via-green-800/10 to-green-900/20 border border-accent-400/20;
+  }
+  
+  .hologram-bg {
+    @apply bg-gradient-to-br from-purple-900/20 via-primary-800/10 to-secondary-800/20 border border-secondary-400/20;
   }
 }
 

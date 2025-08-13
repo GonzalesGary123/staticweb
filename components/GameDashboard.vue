@@ -6,83 +6,83 @@
     <div class="container-custom relative z-10">
       <!-- Game Header -->
       <div class="text-center mb-16">
-        <div class="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-sm font-medium text-white/80 mb-6">
-          <span class="w-2 h-2 bg-accent-400 rounded-full mr-2 animate-pulse"></span>
-          🎮 Crypto Trading Game
+        <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-neon-blue/20 to-neon-pink/20 backdrop-blur-sm border-2 border-neon-blue/30 rounded-full text-sm font-bold text-neon-blue mb-6 animate-neon-pulse">
+          <span class="w-2 h-2 bg-neon-green rounded-full mr-2 animate-pulse"></span>
+          🎮 CRYPTO GAMING ARENA
         </div>
         <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
-          🚀 <span class="text-gradient-primary">Trading Arena</span>
+          🚀 <span class="text-gradient-gaming animate-neon-pulse">TRADING ARENA</span>
         </h2>
         <p class="text-xl text-white/80 max-w-3xl mx-auto">
-          Test your trading skills, compete with others, and climb the leaderboard in this epic crypto trading game!
+          Enter the ultimate crypto trading battlefield! Test your skills, unlock achievements, and dominate the leaderboard in this EPIC gaming experience!
         </p>
       </div>
 
       <!-- Game Controls -->
       <div class="grid lg:grid-cols-3 gap-8 mb-16">
         <!-- Start Game Card -->
-        <div class="card-glass p-8 text-center">
-          <div class="w-20 h-20 bg-gradient-to-br from-green-500/20 to-green-600/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+        <div class="game-card p-8 text-center border-neon-green hover:border-neon-green/60">
+          <div class="w-20 h-20 bg-gradient-to-br from-neon-green/30 to-green-600/20 rounded-2xl flex items-center justify-center mx-auto mb-6 animate-pulse-slow">
             <span class="text-4xl">🎯</span>
           </div>
-          <h3 class="text-2xl font-bold text-white mb-4">Start Trading</h3>
+          <h3 class="text-2xl font-bold text-neon-green mb-4">START TRADING</h3>
           <p class="text-white/70 mb-6">
             Begin your crypto trading journey with virtual money
           </p>
           <button 
             @click="startSimulation"
             :disabled="isGameActive"
-            class="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed"
+            class="cyber-button w-full disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {{ isGameActive ? 'Game Active' : 'Start Simulation' }}
+            {{ isGameActive ? '🎮 GAME ACTIVE' : '🚀 START SIMULATION' }}
           </button>
         </div>
 
         <!-- Challenges Card -->
-        <div class="card-glass p-8 text-center">
-          <div class="w-20 h-20 bg-gradient-to-br from-purple-500/20 to-purple-600/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+        <div class="game-card p-8 text-center border-neon-pink hover:border-neon-pink/60">
+          <div class="w-20 h-20 bg-gradient-to-br from-neon-pink/30 to-purple-600/20 rounded-2xl flex items-center justify-center mx-auto mb-6 animate-pulse-slow">
             <span class="text-4xl">🏆</span>
           </div>
-          <h3 class="text-2xl font-bold text-white mb-4">Challenges</h3>
+          <h3 class="text-2xl font-bold text-neon-pink mb-4">CHALLENGES</h3>
           <p class="text-white/70 mb-6">
             Take on timed challenges to earn rewards and badges
           </p>
           <button 
             @click="showChallenges = true"
-            class="btn-secondary w-full"
+            class="cyber-button w-full bg-gradient-to-r from-neon-pink to-purple-500 hover:from-purple-600 hover:to-neon-pink"
           >
-            View Challenges
+            🏆 VIEW CHALLENGES
           </button>
         </div>
 
         <!-- Leaderboard Card -->
-        <div class="card-glass p-8 text-center">
-          <div class="w-20 h-20 bg-gradient-to-br from-yellow-500/20 to-yellow-600/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+        <div class="game-card p-8 text-center border-neon-yellow hover:border-neon-yellow/60">
+          <div class="w-20 h-20 bg-gradient-to-br from-neon-yellow/30 to-yellow-600/20 rounded-2xl flex items-center justify-center mx-auto mb-6 animate-pulse-slow">
             <span class="text-4xl">👑</span>
           </div>
-          <h3 class="text-2xl font-bold text-white mb-4">Leaderboard</h3>
+          <h3 class="text-2xl font-bold text-neon-yellow mb-4">LEADERBOARD</h3>
           <p class="text-white/70 mb-6">
             Compete with other traders and climb the ranks
           </p>
           <button 
             @click="showLeaderboard = true"
-            class="btn-accent w-full"
+            class="cyber-button w-full bg-gradient-to-r from-neon-yellow to-yellow-500 hover:from-yellow-600 hover:to-neon-yellow text-black"
           >
-            View Rankings
+            👑 VIEW RANKINGS
           </button>
         </div>
       </div>
 
       <!-- Player Stats -->
-      <div class="card-glass p-8 mb-16">
+      <div class="game-card p-8 mb-16 border-neon-blue">
         <div class="flex items-center justify-between mb-8">
-          <h3 class="text-3xl font-bold text-white">🎮 Player Profile</h3>
+          <h3 class="text-3xl font-bold text-neon-blue animate-neon-pulse">🎮 PLAYER PROFILE</h3>
           <div class="flex items-center space-x-4">
             <div class="text-right">
-              <div class="text-sm text-white/60">Rank</div>
-              <div class="text-xl font-bold text-gradient-primary">{{ playerRank }}</div>
+              <div class="text-sm text-white/60">RANK</div>
+              <div class="text-xl font-bold text-gradient-cyber animate-neon-pulse">{{ playerRank }}</div>
             </div>
-            <div class="w-16 h-16 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center">
+            <div class="w-16 h-16 bg-gradient-to-br from-neon-blue to-neon-cyan rounded-2xl flex items-center justify-center animate-glow">
               <span class="text-2xl">🎯</span>
             </div>
           </div>
@@ -90,12 +90,12 @@
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           <!-- Level & Experience -->
-          <div class="text-center p-6 bg-white/5 rounded-xl">
-            <div class="text-3xl font-bold text-white mb-2">Level {{ player.level }}</div>
-            <div class="text-sm text-white/60 mb-3">Experience</div>
-            <div class="w-full bg-gray-700 rounded-full h-2 mb-2">
+          <div class="text-center p-6 matrix-bg rounded-xl border border-neon-green/30">
+            <div class="text-3xl font-bold text-neon-green mb-2 animate-level-up">Level {{ player.level }}</div>
+            <div class="text-sm text-white/60 mb-3">EXPERIENCE</div>
+            <div class="w-full bg-dark-700 rounded-full h-2 mb-2">
               <div 
-                class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2 rounded-full transition-all duration-300"
+                class="bg-gradient-to-r from-neon-green to-green-500 h-2 rounded-full transition-all duration-300 animate-pulse"
                 :style="{ width: `${(player.experience / player.experienceToNext) * 100}%` }"
               ></div>
             </div>
@@ -103,47 +103,47 @@
           </div>
 
           <!-- Coins -->
-          <div class="text-center p-6 bg-white/5 rounded-xl">
-            <div class="text-3xl font-bold text-yellow-400 mb-2">{{ formatCoins(player.coins) }}</div>
-            <div class="text-sm text-white/60">Available Coins</div>
+          <div class="text-center p-6 hologram-bg rounded-xl border border-neon-yellow/30">
+            <div class="text-3xl font-bold text-neon-yellow mb-2 animate-neon-pulse">{{ formatCoins(player.coins) }}</div>
+            <div class="text-sm text-white/60">AVAILABLE COINS</div>
           </div>
 
           <!-- Portfolio Value -->
-          <div class="text-center p-6 bg-white/5 rounded-xl">
-            <div class="text-3xl font-bold text-green-400 mb-2">{{ formatCoins(portfolioValue) }}</div>
-            <div class="text-sm text-white/60">Portfolio Value</div>
-            <div class="text-xs" :class="totalProfit >= 0 ? 'text-green-400' : 'text-red-400'">
+          <div class="text-center p-6 matrix-bg rounded-xl border border-neon-green/30">
+            <div class="text-3xl font-bold text-neon-green mb-2 animate-neon-pulse">{{ formatCoins(portfolioValue) }}</div>
+            <div class="text-sm text-white/60">PORTFOLIO VALUE</div>
+            <div class="text-xs" :class="totalProfit >= 0 ? 'text-neon-green' : 'text-red-400'">
               {{ totalProfit >= 0 ? '+' : '' }}{{ formatCoins(totalProfit) }} ({{ profitPercentage }}%)
             </div>
           </div>
 
           <!-- Stats -->
-          <div class="text-center p-6 bg-white/5 rounded-xl">
-            <div class="text-3xl font-bold text-blue-400 mb-2">{{ player.trades }}</div>
-            <div class="text-sm text-white/60">Total Trades</div>
-            <div class="text-xs text-green-400">{{ player.successfulTrades }} successful</div>
+          <div class="text-center p-6 hologram-bg rounded-xl border border-neon-blue/30">
+            <div class="text-3xl font-bold text-neon-blue mb-2 animate-neon-pulse">{{ player.trades }}</div>
+            <div class="text-sm text-white/60">TOTAL TRADES</div>
+            <div class="text-xs text-neon-green">{{ player.successfulTrades }} successful</div>
           </div>
         </div>
 
         <!-- Streak & Badges -->
         <div class="grid md:grid-cols-2 gap-6 mt-8">
-          <div class="p-6 bg-white/5 rounded-xl">
-            <h4 class="text-lg font-semibold text-white mb-4">🔥 Current Streak</h4>
+          <div class="p-6 matrix-bg rounded-xl border border-neon-orange/30">
+            <h4 class="text-lg font-bold text-neon-orange mb-4 animate-neon-pulse">🔥 CURRENT STREAK</h4>
             <div class="flex items-center space-x-2">
-              <span class="text-2xl">{{ '🔥'.repeat(Math.min(player.streak, 5)) }}</span>
-              <span class="text-xl font-bold text-white">{{ player.streak }} days</span>
+              <span class="text-2xl animate-pulse">{{ '🔥'.repeat(Math.min(player.streak, 5)) }}</span>
+              <span class="text-xl font-bold text-neon-orange">{{ player.streak }} days</span>
             </div>
           </div>
           
-          <div class="p-6 bg-white/5 rounded-xl">
-            <h4 class="text-lg font-semibold text-white mb-4">🏅 Badges</h4>
+          <div class="p-6 hologram-bg rounded-xl border border-neon-purple/30">
+            <h4 class="text-lg font-bold text-neon-purple mb-4 animate-neon-pulse">🏅 BADGES</h4>
             <div class="flex flex-wrap gap-2">
               <span 
                 v-for="badge in player.badges" 
                 :key="badge"
-                class="px-3 py-1 bg-gradient-to-r from-primary-500 to-secondary-500 text-white text-xs rounded-full"
+                class="px-3 py-1 bg-gradient-to-r from-neon-purple to-neon-pink text-white text-xs rounded-full font-bold animate-neon-pulse"
               >
-                {{ badge }}
+                {{ badge.toUpperCase() }}
               </span>
             </div>
           </div>
@@ -151,10 +151,10 @@
       </div>
 
       <!-- Portfolio -->
-      <div class="card-glass p-8 mb-16">
+      <div class="game-card p-8 mb-16 border-neon-cyan">
         <div class="flex items-center justify-between mb-8">
-          <h3 class="text-3xl font-bold text-white">💼 Portfolio</h3>
-          <div class="text-sm text-white/60">{{ player.portfolio.length }} assets</div>
+          <h3 class="text-3xl font-bold text-neon-cyan animate-neon-pulse">💼 PORTFOLIO</h3>
+          <div class="text-sm text-white/60">{{ player.portfolio.length }} ASSETS</div>
         </div>
 
         <div v-if="player.portfolio.length > 0" class="space-y-4">
@@ -197,20 +197,20 @@
       </div>
 
       <!-- Achievements -->
-      <div class="card-glass p-8">
-        <h3 class="text-3xl font-bold text-white mb-8">🏆 Achievements</h3>
+      <div class="game-card p-8 border-neon-green">
+        <h3 class="text-3xl font-bold text-neon-green mb-8 animate-neon-pulse">🏆 ACHIEVEMENTS</h3>
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
           <div 
             v-for="achievement in achievements" 
             :key="achievement.id"
-            class="p-4 rounded-xl text-center transition-all duration-200"
-            :class="achievement.unlocked ? 'bg-green-500/20 border border-green-500/30' : 'bg-white/5 border border-white/10'"
+            class="p-4 rounded-xl text-center transition-all duration-300 transform hover:scale-105"
+            :class="achievement.unlocked ? 'matrix-bg border-2 border-neon-green/50 shadow-neon-green/30' : 'hologram-bg border-2 border-white/20'"
           >
-            <div class="text-3xl mb-2">{{ achievement.icon }}</div>
-            <div class="font-semibold text-white mb-1">{{ achievement.name }}</div>
+            <div class="text-3xl mb-2 animate-bounce-slow">{{ achievement.icon }}</div>
+            <div class="font-bold text-white mb-1">{{ achievement.name.toUpperCase() }}</div>
             <div class="text-xs text-white/60 mb-2">{{ achievement.description }}</div>
-            <div class="text-xs" :class="achievement.unlocked ? 'text-green-400' : 'text-white/40'">
-              {{ achievement.unlocked ? '✅ Unlocked' : `${achievement.points} XP` }}
+            <div class="text-xs font-bold" :class="achievement.unlocked ? 'text-neon-green animate-neon-pulse' : 'text-white/40'">
+              {{ achievement.unlocked ? '✅ UNLOCKED' : `${achievement.points} XP` }}
             </div>
           </div>
         </div>
