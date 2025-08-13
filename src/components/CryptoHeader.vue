@@ -1,22 +1,71 @@
 <template>
-  <header class="header">
-    <div class="container">
-      <nav class="nav">
-        <div class="nav-brand">
-          <h1 class="brand-title">🚀 CryptoGroup</h1>
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/10 backdrop-blur-xl border-b border-white/20">
+    <div class="container-custom">
+      <nav class="flex items-center justify-between py-4">
+        <!-- Logo/Brand -->
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center shadow-lg">
+            <span class="text-2xl">🚀</span>
+          </div>
+          <div>
+            <h1 class="text-xl font-bold text-white">CryptoGroup</h1>
+            <p class="text-xs text-white/60">Future of Finance</p>
+          </div>
         </div>
-        <ul class="nav-menu">
-          <li><a href="#home" class="nav-link">Home</a></li>
-          <li><a href="#features" class="nav-link">Features</a></li>
-          <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
-        <div class="nav-toggle" @click="toggleMenu">
-          <span></span>
-          <span></span>
-          <span></span>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden lg:flex items-center space-x-8">
+          <a href="#home" class="nav-link text-sm font-medium">Home</a>
+          <a href="#market" class="nav-link text-sm font-medium">Market</a>
+          <a href="#features" class="nav-link text-sm font-medium">Features</a>
+          <a href="#about" class="nav-link text-sm font-medium">About</a>
+          <a href="#demo" class="nav-link text-sm font-medium">Demo</a>
         </div>
+
+        <!-- CTA Buttons -->
+        <div class="hidden lg:flex items-center space-x-4">
+          <button class="px-4 py-2 text-white/80 hover:text-white transition-colors duration-200">
+            Sign In
+          </button>
+          <button class="btn-primary text-sm">
+            Join Community
+          </button>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button 
+          @click="toggleMobileMenu" 
+          class="lg:hidden p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors duration-200"
+        >
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path v-if="!isMobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
       </nav>
+
+      <!-- Mobile Navigation -->
+      <div 
+        v-show="isMobileMenuOpen" 
+        class="lg:hidden py-4 border-t border-white/20 animate-fade-in-down"
+      >
+        <div class="flex flex-col space-y-4">
+          <a href="#home" class="nav-link text-base font-medium py-2">Home</a>
+          <a href="#market" class="nav-link text-base font-medium py-2">Market</a>
+          <a href="#features" class="nav-link text-base font-medium py-2">Features</a>
+          <a href="#about" class="nav-link text-base font-medium py-2">About</a>
+          <a href="#demo" class="nav-link text-base font-medium py-2">Demo</a>
+          
+          <div class="pt-4 border-t border-white/20">
+            <button class="w-full btn-primary text-sm mb-3">
+              Join Community
+            </button>
+            <button class="w-full px-4 py-2 text-white/80 hover:text-white transition-colors duration-200">
+              Sign In
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
 </template>
@@ -24,85 +73,13 @@
 <script setup>
 import { ref } from 'vue'
 
-const isMenuOpen = ref(false)
+const isMobileMenuOpen = ref(false)
 
-const toggleMenu = () => {
-  isMenuOpen.value = !isMenuOpen.value
+const toggleMobileMenu = () => {
+  isMobileMenuOpen.value = !isMobileMenuOpen.value
 }
 </script>
 
 <style scoped>
-.header {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-}
-
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 0;
-}
-
-.nav-brand .brand-title {
-  color: #fff;
-  font-size: 1.8rem;
-  font-weight: 700;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
-
-.nav-menu {
-  display: flex;
-  list-style: none;
-  gap: 2rem;
-}
-
-.nav-link {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  padding: 0.5rem 1rem;
-  border-radius: 25px;
-}
-
-.nav-link:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
-}
-
-.nav-toggle {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  gap: 4px;
-}
-
-.nav-toggle span {
-  width: 25px;
-  height: 3px;
-  background: #fff;
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-@media (max-width: 768px) {
-  .nav-menu {
-    display: none;
-  }
-  
-  .nav-toggle {
-    display: flex;
-  }
-  
-  .brand-title {
-    font-size: 1.5rem;
-  }
-}
+/* Component-specific styles can be added here if needed */
 </style>

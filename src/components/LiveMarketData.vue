@@ -1,190 +1,234 @@
 <template>
-  <section class="section live-market">
-    <div class="container">
-      <h2 class="section-title">📊 Live Market Data</h2>
-      
-      <!-- Market Overview -->
-      <div class="market-overview" v-if="globalData">
-        <div class="overview-card">
-          <div class="overview-icon">🌍</div>
-          <div class="overview-content">
-            <h3>Global Market Cap</h3>
-            <div class="overview-value">{{ formatMarketCap(globalData.total_market_cap) }}</div>
-            <div class="overview-change" :class="getPriceChangeColor(globalData.market_cap_change_percentage_24h)">
-              {{ formatPercentage(globalData.market_cap_change_percentage_24h) }}
-            </div>
+  <section id="market" class="section-padding relative overflow-hidden">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 bg-gradient-to-br from-dark-800/50 to-dark-900/50"></div>
+    
+    <div class="container-custom relative z-10">
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-sm font-medium text-white/80 mb-6">
+          <span class="w-2 h-2 bg-accent-400 rounded-full mr-2 animate-pulse"></span>
+          Live Market Data
+        </div>
+        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+          📊 Real-Time <span class="text-gradient-primary">Crypto Market</span>
+        </h2>
+        <p class="text-xl text-white/80 max-w-3xl mx-auto">
+          Stay updated with live cryptocurrency prices, market trends, and performance metrics
+        </p>
+      </div>
+
+      <!-- Market Overview Cards -->
+      <div v-if="globalData" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div class="card-glass p-6 text-center group hover:scale-105 transition-transform duration-300">
+          <div class="w-16 h-16 bg-gradient-to-br from-primary-500/20 to-primary-600/20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+            <span class="text-3xl">🌍</span>
+          </div>
+          <h3 class="text-lg font-semibold text-white/90 mb-2">Global Market Cap</h3>
+          <div class="text-2xl font-bold text-white mb-2">{{ formatMarketCap(globalData.total_market_cap) }}</div>
+          <div 
+            class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium"
+            :class="globalData.market_cap_change_percentage_24h >= 0 ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'"
+          >
+            <span class="mr-1">{{ globalData.market_cap_change_percentage_24h >= 0 ? '📈' : '📉' }}</span>
+            {{ formatPercentage(globalData.market_cap_change_percentage_24h) }}
           </div>
         </div>
-        
-        <div class="overview-card">
-          <div class="overview-icon">📈</div>
-          <div class="overview-content">
-            <h3>24h Volume</h3>
-            <div class="overview-value">{{ formatVolume(globalData.total_volume) }}</div>
-            <div class="overview-change" :class="getPriceChangeColor(globalData.total_volume_yesterday)">
-              {{ formatPercentage(globalData.total_volume_yesterday) }}
-            </div>
+
+        <div class="card-glass p-6 text-center group hover:scale-105 transition-transform duration-300">
+          <div class="w-16 h-16 bg-gradient-to-br from-secondary-500/20 to-secondary-600/20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+            <span class="text-3xl">📈</span>
+          </div>
+          <h3 class="text-lg font-semibold text-white/90 mb-2">24h Volume</h3>
+          <div class="text-2xl font-bold text-white mb-2">{{ formatVolume(globalData.total_volume) }}</div>
+          <div 
+            class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium"
+            :class="globalData.total_volume_yesterday >= 0 ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'"
+          >
+            <span class="mr-1">{{ globalData.total_volume_yesterday >= 0 ? '📈' : '📉' }}</span>
+            {{ formatPercentage(globalData.total_volume_yesterday) }}
           </div>
         </div>
-        
-        <div class="overview-card">
-          <div class="overview-icon">🪙</div>
-          <div class="overview-content">
-            <h3>Active Coins</h3>
-            <div class="overview-value">{{ globalData.active_cryptocurrencies.toLocaleString() }}</div>
-            <div class="overview-subtitle">Cryptocurrencies</div>
+
+        <div class="card-glass p-6 text-center group hover:scale-105 transition-transform duration-300">
+          <div class="w-16 h-16 bg-gradient-to-br from-accent-500/20 to-accent-600/20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+            <span class="text-3xl">🪙</span>
           </div>
+          <h3 class="text-lg font-semibold text-white/90 mb-2">Active Coins</h3>
+          <div class="text-2xl font-bold text-white mb-2">{{ globalData.active_cryptocurrencies.toLocaleString() }}</div>
+          <div class="text-sm text-white/60">Cryptocurrencies</div>
         </div>
-        
-        <div class="overview-card">
-          <div class="overview-icon">🏢</div>
-          <div class="overview-content">
-            <h3>Exchanges</h3>
-            <div class="overview-value">{{ globalData.active_exchanges.toLocaleString() }}</div>
-            <div class="overview-subtitle">Active</div>
+
+        <div class="card-glass p-6 text-center group hover:scale-105 transition-transform duration-300">
+          <div class="w-16 h-16 bg-gradient-to-br from-purple-500/20 to-purple-600/20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+            <span class="text-3xl">🏢</span>
           </div>
+          <h3 class="text-lg font-semibold text-white/90 mb-2">Exchanges</h3>
+          <div class="text-2xl font-bold text-white mb-2">{{ globalData.active_exchanges.toLocaleString() }}</div>
+          <div class="text-sm text-white/60">Active</div>
         </div>
       </div>
-      
-      <!-- Top Performers -->
-      <div class="performers-section">
-        <div class="performers-grid">
-          <!-- Top Gainers -->
-          <div class="performers-card gainers">
-            <div class="card-header">
-              <h3 class="card-title">🚀 Top Gainers (24h)</h3>
-              <div class="card-subtitle">Best performing cryptocurrencies</div>
+
+      <!-- Top Performers Section -->
+      <div class="grid lg:grid-cols-2 gap-8 mb-16">
+        <!-- Top Gainers -->
+        <div class="card-glass p-8">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <h3 class="text-2xl font-bold text-white mb-2">🚀 Top Gainers (24h)</h3>
+              <p class="text-white/60">Best performing cryptocurrencies</p>
             </div>
-            
-            <div class="performers-list" v-if="topGainers.length > 0">
-              <div 
-                class="performer-item" 
-                v-for="(coin, index) in topGainers" 
-                :key="coin.id"
-                :style="{ animationDelay: `${index * 0.1}s` }"
-              >
-                <div class="performer-rank">{{ index + 1 }}</div>
-                <img :src="coin.image" :alt="coin.name" class="performer-image" />
-                <div class="performer-info">
-                  <div class="performer-name">{{ coin.name }}</div>
-                  <div class="performer-symbol">{{ coin.symbol }}</div>
-                </div>
-                <div class="performer-price">{{ formatPrice(coin.current_price) }}</div>
-                <div class="performer-change positive">
-                  {{ formatPercentage(coin.price_change_percentage_24h) }}
-                </div>
+            <div class="w-12 h-12 bg-gradient-to-br from-green-500/20 to-green-600/20 rounded-xl flex items-center justify-center">
+              <span class="text-2xl">📈</span>
+            </div>
+          </div>
+          
+          <div v-if="topGainers.length > 0" class="space-y-4">
+            <div 
+              v-for="(coin, index) in topGainers" 
+              :key="coin.id"
+              class="flex items-center p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors duration-200"
+              :style="{ animationDelay: `${index * 0.1}s` }"
+            >
+              <div class="w-8 h-8 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">
+                {{ index + 1 }}
               </div>
-            </div>
-            
-            <div class="loading-placeholder" v-else-if="loading">
-              <div class="loading-item" v-for="i in 5" :key="i">
-                <div class="loading-shimmer"></div>
+              <img :src="coin.image" :alt="coin.name" class="w-10 h-10 rounded-full mr-4">
+              <div class="flex-1">
+                <div class="font-semibold text-white">{{ coin.name }}</div>
+                <div class="text-sm text-white/60">{{ coin.symbol }}</div>
+              </div>
+              <div class="text-right">
+                <div class="font-bold text-white">{{ formatPrice(coin.current_price) }}</div>
+                <div class="text-sm text-green-400 font-medium">
+                  +{{ formatPercentage(coin.price_change_percentage_24h) }}
+                </div>
               </div>
             </div>
           </div>
           
-          <!-- Top Losers -->
-          <div class="performers-card losers">
-            <div class="card-header">
-              <h3 class="card-title">📉 Top Losers (24h)</h3>
-              <div class="card-subtitle">Worst performing cryptocurrencies</div>
+          <div v-else-if="loading" class="space-y-4">
+            <div v-for="i in 5" :key="i" class="loading-shimmer h-16"></div>
+          </div>
+        </div>
+
+        <!-- Top Losers -->
+        <div class="card-glass p-8">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <h3 class="text-2xl font-bold text-white mb-2">📉 Top Losers (24h)</h3>
+              <p class="text-white/60">Worst performing cryptocurrencies</p>
             </div>
-            
-            <div class="performers-list" v-if="topLosers.length > 0">
-              <div 
-                class="performer-item" 
-                v-for="(coin, index) in topLosers" 
-                :key="coin.id"
-                :style="{ animationDelay: `${index * 0.1}s` }"
-              >
-                <div class="performer-rank">{{ index + 1 }}</div>
-                <img :src="coin.image" :alt="coin.name" class="performer-image" />
-                <div class="performer-info">
-                  <div class="performer-name">{{ coin.name }}</div>
-                  <div class="performer-symbol">{{ coin.symbol }}</div>
-                </div>
-                <div class="performer-price">{{ formatPrice(coin.current_price) }}</div>
-                <div class="performer-change negative">
+            <div class="w-12 h-12 bg-gradient-to-br from-red-500/20 to-red-600/20 rounded-xl flex items-center justify-center">
+              <span class="text-2xl">📉</span>
+            </div>
+          </div>
+          
+          <div v-if="topLosers.length > 0" class="space-y-4">
+            <div 
+              v-for="(coin, index) in topLosers" 
+              :key="coin.id"
+              class="flex items-center p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors duration-200"
+              :style="{ animationDelay: `${index * 0.1}s` }"
+            >
+              <div class="w-8 h-8 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">
+                {{ index + 1 }}
+              </div>
+              <img :src="coin.image" :alt="coin.name" class="w-10 h-10 rounded-full mr-4">
+              <div class="flex-1">
+                <div class="font-semibold text-white">{{ coin.name }}</div>
+                <div class="text-sm text-white/60">{{ coin.symbol }}</div>
+              </div>
+              <div class="text-right">
+                <div class="font-bold text-white">{{ formatPrice(coin.current_price) }}</div>
+                <div class="text-sm text-red-400 font-medium">
                   {{ formatPercentage(coin.price_change_percentage_24h) }}
                 </div>
               </div>
             </div>
-            
-            <div class="loading-placeholder" v-else-if="loading">
-              <div class="loading-item" v-for="i in 5" :key="i">
-                <div class="loading-shimmer"></div>
-              </div>
-            </div>
+          </div>
+          
+          <div v-else-if="loading" class="space-y-4">
+            <div v-for="i in 5" :key="i" class="loading-shimmer h-16"></div>
           </div>
         </div>
       </div>
-      
-      <!-- Market Table -->
-      <div class="market-table-section">
-        <div class="table-header">
-          <h3 class="table-title">📋 All Cryptocurrencies</h3>
-          <div class="table-controls">
+
+      <!-- Market Table Section -->
+      <div class="card-glass p-8">
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-8">
+          <div>
+            <h3 class="text-2xl font-bold text-white mb-2">📋 All Cryptocurrencies</h3>
+            <p class="text-white/60">Comprehensive market data and performance metrics</p>
+          </div>
+          <div class="flex items-center space-x-4 mt-4 lg:mt-0">
             <button 
-              class="refresh-btn" 
               @click="refreshData"
               :disabled="loading"
-              :class="{ loading: loading }"
+              class="btn-primary text-sm disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <span class="btn-icon">🔄</span>
-              Refresh
+              <span class="mr-2">🔄</span>
+              {{ loading ? 'Refreshing...' : 'Refresh Data' }}
             </button>
-            <div class="last-updated" v-if="lastUpdated">
+            <div v-if="lastUpdated" class="text-sm text-white/60">
               Updated: {{ formatTime(lastUpdated) }}
             </div>
           </div>
         </div>
         
-        <div class="market-table-container">
-          <table class="market-table" v-if="!loading && marketData.length > 0">
+        <!-- Market Table -->
+        <div class="overflow-x-auto">
+          <table class="w-full" v-if="!loading && marketData.length > 0">
             <thead>
-              <tr>
-                <th>#</th>
-                <th>Coin</th>
-                <th>Price</th>
-                <th>24h Change</th>
-                <th>Market Cap</th>
-                <th>Volume (24h)</th>
-                <th>Circulating Supply</th>
+              <tr class="border-b border-white/20">
+                <th class="text-left py-4 px-4 text-white/80 font-semibold">#</th>
+                <th class="text-left py-4 px-4 text-white/80 font-semibold">Coin</th>
+                <th class="text-left py-4 px-4 text-white/80 font-semibold">Price</th>
+                <th class="text-left py-4 px-4 text-white/80 font-semibold">24h Change</th>
+                <th class="text-left py-4 px-4 text-white/80 font-semibold">Market Cap</th>
+                <th class="text-left py-4 px-4 text-white/80 font-semibold">Volume (24h)</th>
+                <th class="text-left py-4 px-4 text-white/80 font-semibold">Circulating Supply</th>
               </tr>
             </thead>
             <tbody>
               <tr 
                 v-for="coin in marketData" 
                 :key="coin.id"
-                class="table-row"
-                :class="{ 'positive-change': coin.price_change_percentage_24h > 0, 'negative-change': coin.price_change_percentage_24h < 0 }"
+                class="border-b border-white/10 hover:bg-white/5 transition-colors duration-200"
+                :class="{ 'bg-green-500/5': coin.price_change_percentage_24h > 0, 'bg-red-500/5': coin.price_change_percentage_24h < 0 }"
               >
-                <td class="rank-cell">{{ coin.market_cap_rank }}</td>
-                <td class="coin-cell">
-                  <div class="coin-info">
-                    <img :src="coin.image" :alt="coin.name" class="coin-image" />
-                    <div class="coin-details">
-                      <div class="coin-name">{{ coin.name }}</div>
-                      <div class="coin-symbol">{{ coin.symbol }}</div>
+                <td class="py-4 px-4 text-white/60 font-medium">{{ coin.market_cap_rank }}</td>
+                <td class="py-4 px-4">
+                  <div class="flex items-center space-x-3">
+                    <img :src="coin.image" :alt="coin.name" class="w-8 h-8 rounded-full">
+                    <div>
+                      <div class="font-semibold text-white">{{ coin.name }}</div>
+                      <div class="text-sm text-white/60">{{ coin.symbol }}</div>
                     </div>
                   </div>
                 </td>
-                <td class="price-cell">{{ formatPrice(coin.current_price) }}</td>
-                <td class="change-cell" :class="getPriceChangeColor(coin.price_change_percentage_24h)">
-                  <span class="change-icon">{{ getPriceChangeIcon(coin.price_change_percentage_24h) }}</span>
-                  {{ formatPercentage(coin.price_change_percentage_24h) }}
+                <td class="py-4 px-4 font-bold text-white">{{ formatPrice(coin.current_price) }}</td>
+                <td class="py-4 px-4">
+                  <div class="flex items-center space-x-2">
+                    <span class="text-lg">{{ getPriceChangeIcon(coin.price_change_percentage_24h) }}</span>
+                    <span 
+                      class="font-semibold"
+                      :class="coin.price_change_percentage_24h > 0 ? 'text-green-400' : 'text-red-400'"
+                    >
+                      {{ formatPercentage(coin.price_change_percentage_24h) }}
+                    </span>
+                  </div>
                 </td>
-                <td class="market-cap-cell">{{ formatMarketCap(coin.market_cap) }}</td>
-                <td class="volume-cell">{{ formatVolume(coin.total_volume) }}</td>
-                <td class="supply-cell">{{ formatSupply(coin.circulating_supply) }}</td>
+                <td class="py-4 px-4 font-semibold text-white">{{ formatMarketCap(coin.market_cap) }}</td>
+                <td class="py-4 px-4 font-semibold text-white">{{ formatVolume(coin.total_volume) }}</td>
+                <td class="py-4 px-4 font-semibold text-white">{{ formatSupply(coin.circulating_supply) }}</td>
               </tr>
             </tbody>
           </table>
           
-          <div class="loading-table" v-else-if="loading">
-            <div class="loading-row" v-for="i in 8" :key="i">
-              <div class="loading-shimmer"></div>
-            </div>
+          <!-- Loading State -->
+          <div v-else-if="loading" class="space-y-4">
+            <div v-for="i in 8" :key="i" class="loading-shimmer h-16"></div>
           </div>
         </div>
       </div>
@@ -207,7 +251,6 @@ const {
   formatPercentage,
   formatMarketCap,
   formatVolume,
-  getPriceChangeColor,
   getPriceChangeIcon
 } = useCrypto()
 
@@ -235,469 +278,5 @@ const formatSupply = (supply) => {
 </script>
 
 <style scoped>
-.live-market {
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  border-top: 1px solid var(--glass-border);
-  border-bottom: 1px solid var(--glass-border);
-}
-
-/* Market Overview */
-.market-overview {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-bottom: 4rem;
-}
-
-.overview-card {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: var(--border-radius);
-  padding: 2rem;
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  box-shadow: var(--shadow-medium);
-  backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
-  transition: var(--transition);
-}
-
-.overview-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-heavy);
-}
-
-.overview-icon {
-  font-size: 3rem;
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.overview-content h3 {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #666;
-  margin-bottom: 0.5rem;
-}
-
-.overview-value {
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: #333;
-  margin-bottom: 0.5rem;
-}
-
-.overview-change {
-  font-size: 0.9rem;
-  font-weight: 600;
-  padding: 0.25rem 0.5rem;
-  border-radius: 8px;
-  display: inline-block;
-}
-
-.overview-change.positive {
-  background: rgba(76, 175, 80, 0.2);
-  color: #4caf50;
-}
-
-.overview-change.negative {
-  background: rgba(244, 67, 54, 0.2);
-  color: #f44336;
-}
-
-.overview-subtitle {
-  font-size: 0.9rem;
-  color: #666;
-}
-
-/* Performers Section */
-.performers-section {
-  margin-bottom: 4rem;
-}
-
-.performers-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 2rem;
-}
-
-.performers-card {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: var(--border-radius);
-  padding: 2rem;
-  box-shadow: var(--shadow-medium);
-  backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
-}
-
-.card-header {
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.card-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 0.5rem;
-}
-
-.card-subtitle {
-  color: #666;
-  font-size: 0.9rem;
-}
-
-.performers-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.performer-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  background: rgba(0, 0, 0, 0.02);
-  border-radius: 12px;
-  transition: var(--transition);
-  animation: fadeInUp 0.6s ease-out both;
-}
-
-.performer-item:hover {
-  background: rgba(0, 0, 0, 0.05);
-  transform: translateX(5px);
-}
-
-.performer-rank {
-  width: 30px;
-  height: 30px;
-  background: var(--accent-gradient);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 0.9rem;
-}
-
-.performer-image {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-}
-
-.performer-info {
-  flex: 1;
-}
-
-.performer-name {
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 0.25rem;
-}
-
-.performer-symbol {
-  font-size: 0.8rem;
-  color: #666;
-}
-
-.performer-price {
-  font-weight: 700;
-  color: #333;
-  margin-right: 1rem;
-}
-
-.performer-change {
-  font-weight: 600;
-  padding: 0.25rem 0.5rem;
-  border-radius: 8px;
-  font-size: 0.9rem;
-}
-
-.performer-change.positive {
-  background: rgba(76, 175, 80, 0.2);
-  color: #4caf50;
-}
-
-.performer-change.negative {
-  background: rgba(244, 67, 54, 0.2);
-  color: #f44336;
-}
-
-/* Market Table */
-.market-table-section {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: var(--border-radius);
-  padding: 2rem;
-  box-shadow: var(--shadow-medium);
-  backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
-}
-
-.table-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.table-title {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #333;
-}
-
-.table-controls {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.refresh-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  background: var(--accent-gradient);
-  color: white;
-  border: none;
-  border-radius: 25px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.refresh-btn:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-light);
-}
-
-.refresh-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.btn-icon {
-  font-size: 1rem;
-}
-
-.last-updated {
-  color: #666;
-  font-size: 0.9rem;
-}
-
-/* Table Styles */
-.market-table-container {
-  overflow-x: auto;
-  border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.market-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: white;
-}
-
-.market-table th {
-  background: var(--accent-gradient);
-  color: white;
-  padding: 1rem;
-  text-align: left;
-  font-weight: 600;
-  font-size: 0.9rem;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.market-table td {
-  padding: 1rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  font-size: 0.9rem;
-}
-
-.table-row:hover {
-  background: rgba(0, 0, 0, 0.02);
-}
-
-.rank-cell {
-  font-weight: 700;
-  color: #666;
-  width: 60px;
-}
-
-.coin-cell {
-  min-width: 200px;
-}
-
-.coin-info {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.coin-image {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-}
-
-.coin-details {
-  display: flex;
-  flex-direction: column;
-}
-
-.coin-name {
-  font-weight: 600;
-  color: #333;
-}
-
-.coin-symbol {
-  font-size: 0.8rem;
-  color: #666;
-}
-
-.price-cell {
-  font-weight: 700;
-  color: #333;
-  min-width: 120px;
-}
-
-.change-cell {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 600;
-  min-width: 120px;
-}
-
-.change-icon {
-  font-size: 1rem;
-}
-
-.market-cap-cell,
-.volume-cell,
-.supply-cell {
-  font-weight: 600;
-  color: #333;
-  min-width: 120px;
-}
-
-.positive-change {
-  color: #4caf50;
-}
-
-.negative-change {
-  color: #f44336;
-}
-
-/* Loading States */
-.loading-placeholder {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.loading-item {
-  height: 60px;
-  background: rgba(0, 0, 0, 0.05);
-  border-radius: 8px;
-  overflow: hidden;
-  position: relative;
-}
-
-.loading-shimmer {
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-  animation: shimmer 1.5s infinite;
-}
-
-.loading-table {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.loading-row {
-  height: 60px;
-  background: rgba(0, 0, 0, 0.05);
-  border-radius: 8px;
-  overflow: hidden;
-  position: relative;
-}
-
-@keyframes shimmer {
-  0% { left: -100%; }
-  100% { left: 100%; }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .market-overview {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  
-  .overview-card {
-    padding: 1.5rem;
-  }
-  
-  .overview-icon {
-    font-size: 2rem;
-  }
-  
-  .overview-value {
-    font-size: 1.5rem;
-  }
-  
-  .performers-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .table-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .market-table th,
-  .market-table td {
-    padding: 0.75rem 0.5rem;
-    font-size: 0.8rem;
-  }
-  
-  .coin-cell {
-    min-width: 150px;
-  }
-  
-  .price-cell,
-  .change-cell,
-  .market-cap-cell,
-  .volume-cell,
-  .supply-cell {
-    min-width: 80px;
-  }
-}
+/* Component-specific styles can be added here if needed */
 </style>

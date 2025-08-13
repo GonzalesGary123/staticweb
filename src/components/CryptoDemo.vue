@@ -1,127 +1,210 @@
 <template>
-  <section class="section crypto-demo">
-    <div class="container">
-      <h2 class="section-title">🔧 API Demo & Testing</h2>
-      
-      <div class="demo-content">
-        <div class="demo-controls">
-          <div class="control-group">
-            <label class="control-label">Select Cryptocurrencies:</label>
-            <div class="crypto-selector">
-              <label class="checkbox-item" v-for="crypto in availableCryptos" :key="crypto.id">
+  <section id="demo" class="section-padding relative overflow-hidden">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 bg-gradient-to-br from-dark-800/50 to-dark-900/50"></div>
+    
+    <div class="container-custom relative z-10">
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-sm font-medium text-white/80 mb-6">
+          <span class="w-2 h-2 bg-accent-400 rounded-full mr-2 animate-pulse"></span>
+          Interactive Demo
+        </div>
+        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+          🔧 API <span class="text-gradient-primary">Demo & Testing</span>
+        </h2>
+        <p class="text-xl text-white/80 max-w-3xl mx-auto">
+          Test our crypto API functionality, customize data selection, and explore real-time features
+        </p>
+      </div>
+
+      <!-- Demo Controls -->
+      <div class="card-glass p-8 mb-12">
+        <div class="grid lg:grid-cols-3 gap-8">
+          <!-- Cryptocurrency Selector -->
+          <div>
+            <h3 class="text-xl font-bold text-white mb-4">Select Cryptocurrencies</h3>
+            <div class="space-y-3">
+              <label 
+                v-for="crypto in availableCryptos" 
+                :key="crypto.id"
+                class="flex items-center p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-colors duration-200 cursor-pointer"
+              >
                 <input 
                   type="checkbox" 
                   :value="crypto.id" 
                   v-model="selectedCryptos"
                   @change="updateSelection"
+                  class="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 rounded focus:ring-primary-500 focus:ring-2"
                 >
-                <span class="checkmark"></span>
-                <img :src="crypto.image" :alt="crypto.name" class="crypto-thumb">
-                {{ crypto.name }}
+                <img :src="crypto.image" :alt="crypto.name" class="w-6 h-6 rounded-full mx-3">
+                <span class="text-white font-medium">{{ crypto.name }}</span>
               </label>
             </div>
           </div>
-          
-          <div class="control-group">
-            <label class="control-label">Auto-refresh Interval:</label>
-            <select v-model="refreshInterval" @change="updateRefreshInterval" class="interval-select">
-              <option value="10000">10 seconds</option>
-              <option value="30000">30 seconds</option>
-              <option value="60000">1 minute</option>
-              <option value="300000">5 minutes</option>
-            </select>
-          </div>
-          
-          <div class="control-actions">
-            <button @click="refreshData" :disabled="loading" class="btn">
-              <span class="btn-icon">🔄</span>
-              {{ loading ? 'Loading...' : 'Refresh Now' }}
-            </button>
-            <button @click="toggleAutoRefresh" class="btn btn-outline">
-              <span class="btn-icon">{{ isAutoRefreshing ? '⏸️' : '▶️' }}</span>
-              {{ isAutoRefreshing ? 'Stop Auto-refresh' : 'Start Auto-refresh' }}
-            </button>
-          </div>
-        </div>
-        
-        <!-- API Status -->
-        <div class="api-status">
-          <div class="status-item">
-            <span class="status-label">API Status:</span>
-            <span class="status-value" :class="error ? 'error' : 'success'">
-              {{ error ? 'Error' : 'Connected' }}
-            </span>
-          </div>
-          <div class="status-item">
-            <span class="status-label">Last Update:</span>
-            <span class="status-value">{{ lastUpdated ? formatTime(lastUpdated) : 'Never' }}</span>
-          </div>
-          <div class="status-item">
-            <span class="status-label">Data Source:</span>
-            <span class="status-value">CoinGecko API</span>
-          </div>
-        </div>
-        
-        <!-- Real-time Data Display -->
-        <div class="data-display" v-if="marketData.length > 0">
-          <h3 class="display-title">📊 Selected Cryptocurrencies</h3>
-          <div class="crypto-grid">
-            <div 
-              class="crypto-item" 
-              v-for="coin in marketData" 
-              :key="coin.id"
-              :class="{ 'positive': coin.price_change_percentage_24h > 0, 'negative': coin.price_change_percentage_24h < 0 }"
-            >
-              <div class="crypto-header">
-                <img :src="coin.image" :alt="coin.name" class="crypto-image">
-                <div class="crypto-info">
-                  <h4 class="crypto-name">{{ coin.name }}</h4>
-                  <span class="crypto-symbol">{{ coin.symbol }}</span>
-                </div>
-                <div class="market-rank">#{{ coin.market_cap_rank }}</div>
+
+          <!-- Refresh Controls -->
+          <div>
+            <h3 class="text-xl font-bold text-white mb-4">Auto-refresh Settings</h3>
+            <div class="space-y-4">
+              <div>
+                <label class="block text-white/80 text-sm font-medium mb-2">Interval</label>
+                <select 
+                  v-model="refreshInterval" 
+                  @change="updateRefreshInterval" 
+                  class="w-full p-3 bg-white/10 border border-white/20 rounded-lg text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                >
+                  <option value="10000" class="bg-dark-800">10 seconds</option>
+                  <option value="30000" class="bg-dark-800">30 seconds</option>
+                  <option value="60000" class="bg-dark-800">1 minute</option>
+                  <option value="300000" class="bg-dark-800">5 minutes</option>
+                </select>
               </div>
               
-              <div class="crypto-price">
-                <div class="current-price">{{ formatPrice(coin.current_price) }}</div>
-                <div class="price-change">
-                  <span class="change-icon">{{ getPriceChangeIcon(coin.price_change_percentage_24h) }}</span>
-                  {{ formatPercentage(coin.price_change_percentage_24h) }}
-                </div>
+              <div class="space-y-3">
+                <button 
+                  @click="refreshData" 
+                  :disabled="loading" 
+                  class="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  <span class="mr-2">🔄</span>
+                  {{ loading ? 'Loading...' : 'Refresh Now' }}
+                </button>
+                
+                <button 
+                  @click="toggleAutoRefresh" 
+                  class="w-full btn-outline"
+                >
+                  <span class="mr-2">{{ isAutoRefreshing ? '⏸️' : '▶️' }}</span>
+                  {{ isAutoRefreshing ? 'Stop Auto-refresh' : 'Start Auto-refresh' }}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- API Status -->
+          <div>
+            <h3 class="text-xl font-bold text-white mb-4">API Status</h3>
+            <div class="space-y-4">
+              <div class="flex justify-between items-center p-3 bg-white/5 rounded-lg">
+                <span class="text-white/80">Status:</span>
+                <span 
+                  class="px-3 py-1 rounded-full text-sm font-medium"
+                  :class="error ? 'bg-red-500/20 text-red-400' : 'bg-green-500/20 text-green-400'"
+                >
+                  {{ error ? 'Error' : 'Connected' }}
+                </span>
               </div>
               
-              <div class="crypto-stats">
-                <div class="stat-row">
-                  <span class="stat-label">Market Cap:</span>
-                  <span class="stat-value">{{ formatMarketCap(coin.market_cap) }}</span>
-                </div>
-                <div class="stat-row">
-                  <span class="stat-label">Volume (24h):</span>
-                  <span class="stat-value">{{ formatVolume(coin.total_volume) }}</span>
-                </div>
-                <div class="stat-row">
-                  <span class="stat-label">Supply:</span>
-                  <span class="stat-value">{{ formatSupply(coin.circulating_supply) }}</span>
-                </div>
+              <div class="flex justify-between items-center p-3 bg-white/5 rounded-lg">
+                <span class="text-white/80">Last Update:</span>
+                <span class="text-white font-medium">{{ lastUpdated ? formatTime(lastUpdated) : 'Never' }}</span>
               </div>
               
-              <div class="crypto-chart">
-                <div class="chart-placeholder">
-                  <span class="chart-icon">📈</span>
-                  <span class="chart-text">Price Chart</span>
-                </div>
+              <div class="flex justify-between items-center p-3 bg-white/5 rounded-lg">
+                <span class="text-white/80">Data Source:</span>
+                <span class="text-white font-medium">CoinGecko API</span>
               </div>
             </div>
           </div>
         </div>
-        
-        <!-- Error Display -->
-        <div class="error-display" v-if="error">
-          <div class="error-card">
-            <div class="error-icon">⚠️</div>
-            <h3 class="error-title">API Error</h3>
-            <p class="error-message">{{ error }}</p>
-            <button @click="refreshData" class="btn btn-outline">Retry</button>
+      </div>
+
+      <!-- Real-time Data Display -->
+      <div v-if="marketData.length > 0" class="card-glass p-8">
+        <h3 class="text-2xl font-bold text-white mb-6 text-center">📊 Selected Cryptocurrencies</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div 
+            v-for="coin in marketData" 
+            :key="coin.id"
+            class="crypto-card transform transition-all duration-300 hover:scale-105"
+            :class="coin.price_change_percentage_24h > 0 ? 'positive' : 'negative'"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center space-x-3">
+                <img :src="coin.image" :alt="coin.name" class="w-10 h-10 rounded-full">
+                <div>
+                  <h4 class="font-semibold text-gray-900">{{ coin.name }}</h4>
+                  <span class="text-sm text-gray-600">{{ coin.symbol }}</span>
+                </div>
+              </div>
+              <div class="bg-gradient-to-r from-primary-500 to-secondary-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                #{{ coin.market_cap_rank }}
+              </div>
+            </div>
+            
+            <div class="mb-4">
+              <div class="text-2xl font-bold text-gray-900 mb-2">{{ formatPrice(coin.current_price) }}</div>
+              <div class="flex items-center space-x-2">
+                <span class="text-lg">{{ getPriceChangeIcon(coin.price_change_percentage_24h) }}</span>
+                <span 
+                  class="font-semibold text-sm"
+                  :class="coin.price_change_percentage_24h > 0 ? 'text-green-600' : 'text-red-600'"
+                >
+                  {{ formatPercentage(coin.price_change_percentage_24h) }}
+                </span>
+              </div>
+            </div>
+            
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between">
+                <span class="text-gray-600">Market Cap:</span>
+                <span class="font-semibold text-gray-900">{{ formatMarketCap(coin.market_cap) }}</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-600">Volume:</span>
+                <span class="font-semibold text-gray-900">{{ formatVolume(coin.total_volume) }}</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-600">Supply:</span>
+                <span class="font-semibold text-gray-900">{{ formatSupply(coin.circulating_supply) }}</span>
+              </div>
+            </div>
+            
+            <div class="mt-4 h-16 bg-gradient-to-br from-primary-500/10 to-secondary-500/10 rounded-lg flex items-center justify-center">
+              <div class="text-center">
+                <span class="text-2xl">📈</span>
+                <div class="text-xs text-gray-600 mt-1">Price Chart</div>
+              </div>
+            </div>
           </div>
+        </div>
+      </div>
+
+      <!-- Error Display -->
+      <div v-if="error" class="mt-8">
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-8 text-center">
+          <div class="text-4xl mb-4">⚠️</div>
+          <h3 class="text-2xl font-bold text-red-400 mb-4">API Error</h3>
+          <p class="text-red-300 mb-6">{{ error }}</p>
+          <button @click="refreshData" class="btn-outline">Retry</button>
+        </div>
+      </div>
+
+      <!-- Features Showcase -->
+      <div class="mt-16 grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-gradient-to-br from-primary-500/20 to-primary-600/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">⚡</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Real-time Updates</h3>
+          <p class="text-white/60">Live data that refreshes automatically with configurable intervals</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 bg-gradient-to-br from-secondary-500/20 to-secondary-600/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🔧</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Interactive Controls</h3>
+          <p class="text-white/60">Customize which cryptocurrencies to display and refresh settings</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 bg-gradient-to-br from-accent-500/20 to-accent-600/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">📊</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Comprehensive Data</h3>
+          <p class="text-white/60">Market caps, volumes, price changes, and supply information</p>
         </div>
       </div>
     </div>
@@ -171,7 +254,6 @@ const filteredMarketData = computed(() => {
 
 // Methods
 const updateSelection = () => {
-  // Trigger refresh with new selection
   refreshData()
 }
 
@@ -225,383 +307,5 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-.crypto-demo {
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  border-top: 1px solid var(--glass-border);
-  border-bottom: 1px solid var(--glass-border);
-}
-
-.demo-content {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-/* Demo Controls */
-.demo-controls {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: var(--border-radius);
-  padding: 2rem;
-  margin-bottom: 2rem;
-  box-shadow: var(--shadow-medium);
-  backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
-}
-
-.control-group {
-  margin-bottom: 1.5rem;
-}
-
-.control-label {
-  display: block;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
-}
-
-.crypto-selector {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-}
-
-.checkbox-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem;
-  background: rgba(0, 0, 0, 0.02);
-  border-radius: 8px;
-  cursor: pointer;
-  transition: var(--transition);
-  position: relative;
-}
-
-.checkbox-item:hover {
-  background: rgba(0, 0, 0, 0.05);
-}
-
-.checkbox-item input[type="checkbox"] {
-  display: none;
-}
-
-.checkmark {
-  width: 20px;
-  height: 20px;
-  border: 2px solid #ddd;
-  border-radius: 4px;
-  position: relative;
-  transition: var(--transition);
-}
-
-.checkbox-item input[type="checkbox"]:checked + .checkmark {
-  background: var(--accent-gradient);
-  border-color: transparent;
-}
-
-.checkbox-item input[type="checkbox"]:checked + .checkmark::after {
-  content: '✓';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.crypto-thumb {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-}
-
-.interval-select {
-  padding: 0.75rem 1rem;
-  border: 2px solid var(--glass-border);
-  border-radius: 8px;
-  background: white;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.interval-select:focus {
-  outline: none;
-  border-color: var(--accent-gradient);
-}
-
-.control-actions {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-/* API Status */
-.api-status {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.status-item {
-  background: rgba(255, 255, 255, 0.95);
-  padding: 1.5rem;
-  border-radius: var(--border-radius-small);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: var(--shadow-light);
-  backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
-}
-
-.status-label {
-  font-weight: 600;
-  color: #666;
-}
-
-.status-value {
-  font-weight: 700;
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-}
-
-.status-value.success {
-  background: rgba(76, 175, 80, 0.2);
-  color: #4caf50;
-}
-
-.status-value.error {
-  background: rgba(244, 67, 54, 0.2);
-  color: #f44336;
-}
-
-/* Data Display */
-.data-display {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: var(--border-radius);
-  padding: 2rem;
-  box-shadow: var(--shadow-medium);
-  backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
-}
-
-.display-title {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
-.crypto-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-.crypto-item {
-  background: white;
-  border-radius: var(--border-radius-small);
-  padding: 1.5rem;
-  box-shadow: var(--shadow-light);
-  border: 2px solid transparent;
-  transition: var(--transition);
-  position: relative;
-  overflow: hidden;
-}
-
-.crypto-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
-  background: var(--accent-gradient);
-}
-
-.crypto-item.positive {
-  border-color: rgba(76, 175, 80, 0.3);
-}
-
-.crypto-item.negative {
-  border-color: rgba(244, 67, 54, 0.3);
-}
-
-.crypto-item:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-medium);
-}
-
-.crypto-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.crypto-image {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-
-.crypto-info {
-  flex: 1;
-}
-
-.crypto-name {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 0.25rem;
-}
-
-.crypto-symbol {
-  font-size: 0.9rem;
-  color: #666;
-  font-weight: 500;
-}
-
-.market-rank {
-  background: var(--accent-gradient);
-  color: white;
-  padding: 0.25rem 0.5rem;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
-.crypto-price {
-  margin-bottom: 1.5rem;
-}
-
-.current-price {
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: #333;
-  margin-bottom: 0.5rem;
-}
-
-.price-change {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 600;
-  font-size: 1rem;
-}
-
-.change-icon {
-  font-size: 1.2rem;
-}
-
-.crypto-stats {
-  margin-bottom: 1.5rem;
-}
-
-.stat-row {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.stat-row:last-child {
-  border-bottom: none;
-}
-
-.stat-label {
-  color: #666;
-  font-size: 0.9rem;
-}
-
-.stat-value {
-  color: #333;
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-
-.crypto-chart {
-  height: 80px;
-  background: rgba(0, 0, 0, 0.02);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.chart-icon {
-  font-size: 1.5rem;
-}
-
-.chart-text {
-  font-size: 0.8rem;
-  color: #666;
-  font-weight: 500;
-}
-
-/* Error Display */
-.error-display {
-  margin-top: 2rem;
-}
-
-.error-card {
-  background: rgba(244, 67, 54, 0.1);
-  border: 1px solid rgba(244, 67, 54, 0.3);
-  border-radius: var(--border-radius-small);
-  padding: 2rem;
-  text-align: center;
-}
-
-.error-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.error-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #d32f2f;
-  margin-bottom: 1rem;
-}
-
-.error-message {
-  color: #666;
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .crypto-selector {
-    grid-template-columns: 1fr;
-  }
-  
-  .control-actions {
-    flex-direction: column;
-  }
-  
-  .api-status {
-    grid-template-columns: 1fr;
-  }
-  
-  .crypto-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .crypto-item {
-    padding: 1rem;
-  }
-  
-  .current-price {
-    font-size: 1.5rem;
-  }
-}
+/* Component-specific styles can be added here if needed */
 </style>

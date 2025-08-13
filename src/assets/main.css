@@ -1,21 +1,24 @@
 @import './base.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* Global scrollbar styling */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(15, 23, 42, 0.1);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.3);
+  background: linear-gradient(135deg, #0ea5e9, #8b5cf6);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.5);
+  background: linear-gradient(135deg, #0284c7, #7c3aed);
 }
 
 /* Smooth scrolling */
@@ -25,57 +28,122 @@ html {
 
 /* Selection styling */
 ::selection {
-  background: rgba(255, 107, 107, 0.3);
-  color: #fff;
+  background: rgba(14, 165, 233, 0.3);
+  color: #ffffff;
 }
 
 /* Focus styles for accessibility */
 *:focus {
-  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline: 2px solid rgba(14, 165, 233, 0.5);
   outline-offset: 2px;
 }
 
-/* Animation utilities */
-.fade-in {
-  animation: fadeIn 0.6s ease-in;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+/* Custom component classes */
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg shadow-md;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  
+  .btn-secondary {
+    @apply bg-gradient-to-r from-secondary-500 to-secondary-600 hover:from-secondary-600 hover:to-secondary-700 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg shadow-md;
+  }
+  
+  .btn-accent {
+    @apply bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg shadow-md;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105;
+  }
+  
+  .card-glass {
+    @apply bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300;
+  }
+  
+  .card-modern {
+    @apply bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent;
+  }
+  
+  .section-padding {
+    @apply py-20 lg:py-32;
+  }
+  
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 }
 
-/* Loading states */
-.loading {
-  opacity: 0.7;
-  pointer-events: none;
+/* Loading animation */
+.loading-shimmer {
+  @apply relative overflow-hidden bg-gray-200 rounded;
 }
 
-/* Utility classes */
-.text-center {
-  text-align: center;
+.loading-shimmer::after {
+  content: '';
+  @apply absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent animate-shimmer;
 }
 
-.text-left {
-  text-align: left;
+/* Floating elements */
+.floating {
+  @apply animate-float;
 }
 
-.text-right {
-  text-align: right;
+/* Crypto-specific styles */
+.crypto-card {
+  @apply bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2;
 }
 
-.mb-1 { margin-bottom: 0.5rem; }
-.mb-2 { margin-bottom: 1rem; }
-.mb-3 { margin-bottom: 1.5rem; }
-.mb-4 { margin-bottom: 2rem; }
+.crypto-card.positive {
+  @apply border-l-4 border-accent-500;
+}
 
-.mt-1 { margin-top: 0.5rem; }
-.mt-2 { margin-top: 1rem; }
-.mt-3 { margin-top: 1.5rem; }
-.mt-4 { margin-top: 2rem; }
+.crypto-card.negative {
+  @apply border-l-4 border-red-500;
+}
+
+/* Market stats */
+.market-stat {
+  @apply bg-gradient-to-br from-primary-500/10 to-secondary-500/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 text-center;
+}
+
+/* Navigation */
+.nav-link {
+  @apply text-white/80 hover:text-white transition-colors duration-200 relative;
+}
+
+.nav-link::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-400 to-secondary-400 transition-all duration-300;
+}
+
+.nav-link:hover::after {
+  @apply w-full;
+}
+
+/* Hero section */
+.hero-bg {
+  @apply absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900;
+}
+
+.hero-pattern {
+  @apply absolute inset-0 opacity-10;
+  background-image: 
+    radial-gradient(circle at 25% 25%, #0ea5e9 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, #8b5cf6 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, #10b981 0%, transparent 50%);
+}
+
+/* Responsive utilities */
+@media (max-width: 640px) {
+  .container-custom {
+    @apply px-4;
+  }
+  
+  .section-padding {
+    @apply py-16;
+  }
+}
