@@ -29,5 +29,6 @@ export { requestIdleCallback, cancelIdleCallback } from '#app/compat/idle-callba
 export { setInterval } from '#app/compat/interval';
 export { defineLazyHydrationComponent } from '#app/composables/lazy-hydration';
 export { useCrypto } from '../composables/useCrypto';
+export { useGameState } from '../composables/useGameState';
 export { useTheme } from '../composables/useTheme';
 export { useNuxtDevTools } from '../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools';

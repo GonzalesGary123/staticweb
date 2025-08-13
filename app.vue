@@ -10,21 +10,41 @@
     <!-- Content -->
     <div class="relative z-10">
       <CryptoHeader />
-      <main>
-        <CryptoHero />
-        <LiveMarketData />
-        <CryptoFeatures />
-        <CryptoAbout />
-        <CryptoDemo />
-      </main>
-      <CryptoFooter />
-    </div>
-  </div>
-</template>
+                  <main>
+              <CryptoHero />
+              <GameDashboard />
+              <LiveMarketData />
+              <CryptoFeatures />
+              <CryptoAbout />
+              <CryptoDemo />
+            </main>
+                  <CryptoFooter />
+          </div>
+        </div>
+        
+        <!-- Game Interface -->
+        <TradingInterface />
+        
+        <!-- Game Results -->
+        <GameResults 
+          :show-results="showResults"
+          :game-mode="gameMode"
+          :game-stats="gameStats"
+          @close="closeResults"
+          @play-again="playAgain"
+        />
+      </template>
 
 <script setup>
 // Nuxt.js will auto-import components from the components directory
 const { isDark } = useTheme()
+const { 
+  showResults, 
+  gameMode, 
+  gameStats, 
+  closeResults, 
+  playAgain 
+} = useGameState()
 
 // Initialize theme on mount
 onMounted(() => {
