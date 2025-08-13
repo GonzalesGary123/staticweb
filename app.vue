@@ -1,10 +1,10 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900 text-white">
-    <!-- Background Pattern -->
+  <div class="min-h-screen transition-colors duration-300 dark:bg-gradient-to-br dark:from-dark-900 dark:via-dark-800 dark:to-dark-900 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100 dark:text-white text-gray-900">
+    <!-- Background Pattern - Performance optimized -->
     <div class="fixed inset-0 overflow-hidden pointer-events-none">
-      <div class="absolute -top-40 -right-40 w-80 h-80 bg-primary-500/20 rounded-full blur-3xl"></div>
-      <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-secondary-500/20 rounded-full blur-3xl"></div>
-      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl"></div>
+      <div class="absolute -top-40 -right-40 w-80 h-80 dark:bg-primary-500/20 bg-primary-500/10 rounded-full blur-2xl transition-all duration-500"></div>
+      <div class="absolute -bottom-40 -left-40 w-80 h-80 dark:bg-secondary-500/20 bg-secondary-500/10 rounded-full blur-2xl transition-all duration-500"></div>
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 dark:bg-accent-500/10 bg-accent-500/5 rounded-full blur-2xl transition-all duration-500"></div>
     </div>
     
     <!-- Content -->
@@ -24,6 +24,27 @@
 
 <script setup>
 // Nuxt.js will auto-import components from the components directory
+const { isDark } = useTheme()
+
+// Initialize theme on mount
+onMounted(() => {
+  // Apply initial theme
+  if (isDark.value) {
+    document.documentElement.classList.add('dark')
+  } else {
+    document.documentElement.classList.add('light')
+  }
+  
+  // Performance optimization: Reduce animations on low-end devices
+  if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
+    document.documentElement.classList.add('reduce-motion')
+  }
+  
+  // Performance optimization: Reduce blur effects on mobile
+  if (window.innerWidth < 768) {
+    document.documentElement.classList.add('reduce-blur')
+  }
+})
 </script>
 
 <style>

@@ -161,6 +161,7 @@ declare global {
   const useSlots: typeof import('../../node_modules/vue')['useSlots']
   const useState: typeof import('../../node_modules/nuxt/dist/app/composables/state')['useState']
   const useTemplateRef: typeof import('../../node_modules/vue')['useTemplateRef']
+  const useTheme: typeof import('../../composables/useTheme')['useTheme']
   const useTransitionState: typeof import('../../node_modules/vue')['useTransitionState']
   const watch: typeof import('../../node_modules/vue')['watch']
   const watchEffect: typeof import('../../node_modules/vue')['watchEffect']
@@ -343,6 +344,7 @@ declare module 'vue' {
     readonly useSlots: UnwrapRef<typeof import('../../node_modules/vue')['useSlots']>
     readonly useState: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/state')['useState']>
     readonly useTemplateRef: UnwrapRef<typeof import('../../node_modules/vue')['useTemplateRef']>
+    readonly useTheme: UnwrapRef<typeof import('../../composables/useTheme')['useTheme']>
     readonly useTransitionState: UnwrapRef<typeof import('../../node_modules/vue')['useTransitionState']>
     readonly watch: UnwrapRef<typeof import('../../node_modules/vue')['watch']>
     readonly watchEffect: UnwrapRef<typeof import('../../node_modules/vue')['watchEffect']>
