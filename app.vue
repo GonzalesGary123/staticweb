@@ -1,15 +1,5 @@
-<script setup>
-import CryptoHeader from './components/CryptoHeader.vue'
-import CryptoHero from './components/CryptoHero.vue'
-import LiveMarketData from './components/LiveMarketData.vue'
-import CryptoFeatures from './components/CryptoFeatures.vue'
-import CryptoAbout from './components/CryptoAbout.vue'
-import CryptoDemo from './components/CryptoDemo.vue'
-import CryptoFooter from './components/CryptoFooter.vue'
-</script>
-
 <template>
-  <div id="app" class="min-h-screen bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900 text-white">
+  <div class="min-h-screen bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900 text-white">
     <!-- Background Pattern -->
     <div class="fixed inset-0 overflow-hidden pointer-events-none">
       <div class="absolute -top-40 -right-40 w-80 h-80 bg-primary-500/20 rounded-full blur-3xl"></div>
@@ -31,6 +21,10 @@ import CryptoFooter from './components/CryptoFooter.vue'
     </div>
   </div>
 </template>
+
+<script setup>
+// Nuxt.js will auto-import components from the components directory
+</script>
 
 <style>
 /* Global styles */

@@ -1,42 +1,6 @@
-@import './base.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.1);
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #0ea5e9, #8b5cf6);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #0284c7, #7c3aed);
-}
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Selection styling */
-::selection {
-  background: rgba(14, 165, 233, 0.3);
-  color: #ffffff;
-}
-
-/* Focus styles for accessibility */
-*:focus {
-  outline: 2px solid rgba(14, 165, 233, 0.5);
-  outline-offset: 2px;
-}
 
 /* Custom component classes */
 @layer components {
@@ -64,7 +28,7 @@ html {
     @apply bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1;
   }
   
-  .text-gradient {
+  .text-gradient-primary {
     @apply bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent;
   }
   
