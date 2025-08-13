@@ -71,9 +71,9 @@
             <div 
               v-for="(coin, index) in marketData.slice(0, 6)" 
               :key="coin.id"
-              class="crypto-card transform transition-all duration-300 hover:scale-105"
+              class="crypto-card transform transition-all duration-200 hover:scale-105"
               :class="coin.price_change_percentage_24h > 0 ? 'positive' : 'negative'"
-              :style="{ animationDelay: `${index * 0.1}s` }"
+              :style="{ animationDelay: `${index * 0.05}s` }"
             >
               <div class="flex items-center justify-between mb-4">
                 <div class="flex items-center space-x-3">
@@ -119,9 +119,8 @@
             <div v-for="i in 6" :key="i" class="loading-shimmer h-32"></div>
           </div>
 
-          <!-- Floating Elements -->
-          <div class="absolute -top-10 -right-10 w-20 h-20 bg-gradient-to-br from-primary-400 to-secondary-400 rounded-full opacity-20 animate-float"></div>
-          <div class="absolute -bottom-10 -left-10 w-16 h-16 bg-gradient-to-br from-accent-400 to-primary-400 rounded-full opacity-20 animate-float" style="animation-delay: 2s;"></div>
+          <!-- Floating Elements - Reduced for performance -->
+          <div class="absolute -top-10 -right-10 w-16 h-16 bg-gradient-to-br from-primary-400 to-secondary-400 rounded-full opacity-15 animate-float"></div>
         </div>
       </div>
     </div>
