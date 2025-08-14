@@ -49,77 +49,104 @@ export default defineNuxtConfig({
       darkMode: 'class',
       theme: {
         extend: {
-          colors: {
-            primary: {
-              50: '#f0f9ff',
-              100: '#e0f2fe',
-              200: '#bae6fd',
-              300: '#7dd3fc',
-              400: '#38bdf8',
-              500: '#0ea5e9',
-              600: '#0284c7',
-              700: '#0369a1',
-              800: '#075985',
-              900: '#0c4a6e',
-            },
-            secondary: {
-              50: '#fdf4ff',
-              100: '#fae8ff',
-              200: '#f5d0fe',
-              300: '#f0abfc',
-              400: '#e879f9',
-              500: '#d946ef',
-              600: '#c026d3',
-              700: '#a21caf',
-              800: '#86198f',
-              900: '#701a75',
-            },
-            accent: {
-              50: '#ecfdf5',
-              100: '#d1fae5',
-              200: '#a7f3d0',
-              300: '#6ee7b7',
-              400: '#34d399',
-              500: '#10b981',
-              600: '#059669',
-              700: '#047857',
-              800: '#065f46',
-              900: '#064e3b',
-            },
-            dark: {
-              50: '#f8fafc',
-              100: '#f1f5f9',
-              200: '#e2e8f0',
-              300: '#cbd5e1',
-              400: '#94a3b8',
-              500: '#64748b',
-              600: '#475569',
-              700: '#334155',
-              800: '#1e293b',
-              900: '#0f172a',
-            },
-            crypto: {
-              bitcoin: '#f7931a',
-              ethereum: '#627eea',
-              cardano: '#0033ad',
-              solana: '#14f195',
-              polkadot: '#e6007a',
-              ripple: '#23292f',
-            }
-          },
+                           colors: {
+                   // Gaming-inspired primary colors
+                   primary: {
+                     50: '#e0f7ff',
+                     100: '#b3e5fc',
+                     200: '#80d8ee',
+                     300: '#4dd0e1',
+                     400: '#26c6da',
+                     500: '#00bcd4',
+                     600: '#00acc1',
+                     700: '#0097a7',
+                     800: '#00838f',
+                     900: '#006064',
+                   },
+                   // Neon secondary colors
+                   secondary: {
+                     50: '#fce4ec',
+                     100: '#f8bbd9',
+                     200: '#f48fb1',
+                     300: '#f06292',
+                     400: '#ec407a',
+                     500: '#e91e63',
+                     600: '#d81b60',
+                     700: '#c2185b',
+                     800: '#ad1457',
+                     900: '#880e4f',
+                   },
+                   // Cyberpunk accent colors
+                   accent: {
+                     50: '#e8f5e8',
+                     100: '#c8e6c9',
+                     200: '#a5d6a7',
+                     300: '#81c784',
+                     400: '#66bb6a',
+                     500: '#4caf50',
+                     600: '#43a047',
+                     700: '#388e3c',
+                     800: '#2e7d32',
+                     900: '#1b5e20',
+                   },
+                   // Gaming dark theme
+                   dark: {
+                     50: '#0a0a0a',
+                     100: '#1a1a1a',
+                     200: '#2a2a2a',
+                     300: '#3a3a3a',
+                     400: '#4a4a4a',
+                     500: '#5a5a5a',
+                     600: '#6a6a6a',
+                     700: '#7a7a7a',
+                     800: '#8a8a8a',
+                     900: '#9a9a9a',
+                   },
+                   // Neon gaming colors
+                   neon: {
+                     blue: '#00ffff',
+                     pink: '#ff00ff',
+                     green: '#00ff00',
+                     yellow: '#ffff00',
+                     purple: '#8000ff',
+                     orange: '#ff8000',
+                     red: '#ff0000',
+                     cyan: '#00ffff',
+                   },
+                   // Crypto gaming colors
+                   crypto: {
+                     bitcoin: '#ffd700',
+                     ethereum: '#627eea',
+                     cardano: '#0033ad',
+                     solana: '#14f195',
+                     polkadot: '#e6007a',
+                     ripple: '#23292f',
+                     gaming: '#ff6b35',
+                     defi: '#00d4aa',
+                   }
+                 },
           fontFamily: {
             'display': ['Inter', 'system-ui', 'sans-serif'],
             'body': ['Inter', 'system-ui', 'sans-serif'],
           },
-          animation: {
-            'float': 'float 6s ease-in-out infinite',
-            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-            'bounce-slow': 'bounce 2s infinite',
-            'fade-in-up': 'fadeInUp 0.8s ease-out',
-            'slide-in-right': 'slideInRight 0.6s ease-out',
-            'scale-in': 'scaleIn 0.5s ease-out',
-            'shimmer': 'shimmer 2s linear infinite',
-          },
+                           animation: {
+                   'float': 'float 6s ease-in-out infinite',
+                   'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                   'bounce-slow': 'bounce 2s infinite',
+                   'fade-in-up': 'fadeInUp 0.8s ease-out',
+                   'slide-in-right': 'slideInRight 0.6s ease-out',
+                   'scale-in': 'scaleIn 0.5s ease-out',
+                   'shimmer': 'shimmer 2s linear infinite',
+                   // Gaming animations
+                   'glow': 'glow 2s ease-in-out infinite alternate',
+                   'neon-pulse': 'neonPulse 1.5s ease-in-out infinite',
+                   'cyber-float': 'cyberFloat 8s ease-in-out infinite',
+                   'matrix-rain': 'matrixRain 20s linear infinite',
+                   'hologram': 'hologram 3s ease-in-out infinite',
+                   'power-up': 'powerUp 0.6s ease-out',
+                   'game-over': 'gameOver 1s ease-in-out',
+                   'level-up': 'levelUp 1.2s ease-out',
+                 },
           keyframes: {
             float: {
               '0%, 100%': { transform: 'translateY(0px)' },
@@ -137,27 +164,79 @@ export default defineNuxtConfig({
               '0%': { opacity: '0', transform: 'scale(0.9)' },
               '100%': { opacity: '1', transform: 'scale(1)' },
             },
-            shimmer: {
-              '0%': { transform: 'translateX(-100%)' },
-              '100%': { transform: 'translateX(100%)' },
-            }
-          },
-          backgroundImage: {
-            'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-            'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-            'gradient-mesh': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-            'gradient-sunset': 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-            'gradient-ocean': 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-            'gradient-forest': 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
-          },
+                               shimmer: {
+                     '0%': { transform: 'translateX(-100%)' },
+                     '100%': { transform: 'translateX(100%)' },
+                   },
+                   // Gaming keyframes
+                   glow: {
+                     '0%': { boxShadow: '0 0 20px rgba(0, 188, 212, 0.5)' },
+                     '100%': { boxShadow: '0 0 40px rgba(0, 188, 212, 0.8), 0 0 60px rgba(0, 188, 212, 0.6)' },
+                   },
+                   neonPulse: {
+                     '0%': { opacity: '1', textShadow: '0 0 10px currentColor' },
+                     '50%': { opacity: '0.7', textShadow: '0 0 20px currentColor, 0 0 30px currentColor' },
+                     '100%': { opacity: '1', textShadow: '0 0 10px currentColor' },
+                   },
+                   cyberFloat: {
+                     '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                     '50%': { transform: 'translateY(-20px) rotate(5deg)' },
+                   },
+                   matrixRain: {
+                     '0%': { transform: 'translateY(-100vh)' },
+                     '100%': { transform: 'translateY(100vh)' },
+                   },
+                   hologram: {
+                     '0%, 100%': { opacity: '0.8', filter: 'hue-rotate(0deg)' },
+                     '50%': { opacity: '1', filter: 'hue-rotate(180deg)' },
+                   },
+                   powerUp: {
+                     '0%': { transform: 'scale(1)', filter: 'brightness(1)' },
+                     '50%': { transform: 'scale(1.1)', filter: 'brightness(1.3)' },
+                     '100%': { transform: 'scale(1)', filter: 'brightness(1)' },
+                   },
+                   gameOver: {
+                     '0%': { transform: 'scale(1) rotate(0deg)' },
+                     '50%': { transform: 'scale(1.1) rotate(5deg)' },
+                     '100%': { transform: 'scale(1) rotate(0deg)' },
+                   },
+                   levelUp: {
+                     '0%': { transform: 'scale(0.8) translateY(20px)', opacity: '0' },
+                     '50%': { transform: 'scale(1.1) translateY(-10px)', opacity: '0.8' },
+                     '100%': { transform: 'scale(1) translateY(0px)', opacity: '1' },
+                   }
+                 },
+                           backgroundImage: {
+                   'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                   'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+                   'gradient-mesh': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                   'gradient-sunset': 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+                   'gradient-ocean': 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+                   'gradient-forest': 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+                   // Gaming gradients
+                   'gradient-cyber': 'linear-gradient(135deg, #00bcd4 0%, #e91e63 50%, #4caf50 100%)',
+                   'gradient-neon': 'linear-gradient(135deg, #00ffff 0%, #ff00ff 50%, #ffff00 100%)',
+                   'gradient-matrix': 'linear-gradient(135deg, #00ff00 0%, #008000 50%, #004000 100%)',
+                   'gradient-hologram': 'linear-gradient(135deg, #8000ff 0%, #00ffff 50%, #ff8000 100%)',
+                   'gradient-gaming': 'linear-gradient(135deg, #ff6b35 0%, #f7931a 50%, #00d4aa 100%)',
+                   'gradient-arcade': 'linear-gradient(135deg, #ff0000 0%, #ff8000 50%, #ffff00 100%)',
+                 },
           backdropBlur: {
             xs: '2px',
           },
-          boxShadow: {
-            'glow': '0 0 20px rgba(59, 130, 246, 0.5)',
-            'glow-lg': '0 0 40px rgba(59, 130, 246, 0.3)',
-            'inner-glow': 'inset 0 0 20px rgba(59, 130, 246, 0.2)',
-          }
+                           boxShadow: {
+                   'glow': '0 0 20px rgba(59, 130, 246, 0.5)',
+                   'glow-lg': '0 0 40px rgba(59, 130, 246, 0.3)',
+                   'inner-glow': 'inset 0 0 20px rgba(59, 130, 246, 0.2)',
+                   // Gaming shadows
+                   'neon-blue': '0 0 20px rgba(0, 188, 212, 0.8), 0 0 40px rgba(0, 188, 212, 0.4)',
+                   'neon-pink': '0 0 20px rgba(233, 30, 99, 0.8), 0 0 40px rgba(233, 30, 99, 0.4)',
+                   'neon-green': '0 0 20px rgba(76, 175, 80, 0.8), 0 0 40px rgba(76, 175, 80, 0.4)',
+                   'neon-yellow': '0 0 20px rgba(255, 255, 0, 0.8), 0 0 40px rgba(255, 255, 0, 0.4)',
+                   'cyber-glow': '0 0 30px rgba(0, 188, 212, 0.6), 0 0 60px rgba(233, 30, 99, 0.4)',
+                   'hologram': '0 0 25px rgba(128, 0, 255, 0.6), 0 0 50px rgba(0, 255, 255, 0.4)',
+                   'matrix': '0 0 20px rgba(0, 255, 0, 0.8), 0 0 40px rgba(0, 255, 0, 0.4)',
+                 }
         },
       },
     }
