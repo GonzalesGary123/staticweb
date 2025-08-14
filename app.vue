@@ -1,19 +1,11 @@
 <template>
   <div class="min-h-screen transition-colors duration-300 dark:bg-gradient-to-br dark:from-dark-50 dark:via-dark-100 dark:to-dark-200 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100 dark:text-white text-gray-900">
-    <!-- Gaming Background Pattern -->
+    <!-- Simple Gaming Background -->
     <div class="fixed inset-0 overflow-hidden pointer-events-none">
-      <!-- Matrix Rain Effect -->
-      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-green-500/5 to-transparent"></div>
-      
-      <!-- Neon Orbs -->
-      <div class="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-neon-blue/30 to-neon-cyan/20 rounded-full blur-3xl animate-cyber-float transition-all duration-500"></div>
-      <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-neon-pink/30 to-neon-purple/20 rounded-full blur-3xl animate-cyber-float transition-all duration-500" style="animation-delay: 2s;"></div>
-      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-neon-green/20 to-neon-yellow/10 rounded-full blur-3xl animate-cyber-float transition-all duration-500" style="animation-delay: 4s;"></div>
-      
-      <!-- Hologram Grid -->
-      <div class="absolute inset-0 opacity-10">
-        <div class="absolute inset-0" style="background-image: linear-gradient(rgba(0, 188, 212, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 188, 212, 0.1) 1px, transparent 1px); background-size: 50px 50px;"></div>
-      </div>
+      <!-- Simple Neon Accents -->
+      <div class="absolute -top-40 -right-40 w-60 h-60 bg-primary-500/10 rounded-full blur-2xl"></div>
+      <div class="absolute -bottom-40 -left-40 w-60 h-60 bg-secondary-500/10 rounded-full blur-2xl"></div>
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-accent-500/5 rounded-full blur-2xl"></div>
     </div>
     
     <!-- Content -->
