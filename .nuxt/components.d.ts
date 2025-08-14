@@ -18,7 +18,10 @@ interface _GlobalComponents {
     'CryptoFooter': typeof import("../components/CryptoFooter.vue")['default']
     'CryptoHeader': typeof import("../components/CryptoHeader.vue")['default']
     'CryptoHero': typeof import("../components/CryptoHero.vue")['default']
+    'GameDashboard': typeof import("../components/GameDashboard.vue")['default']
+    'GameResults': typeof import("../components/GameResults.vue")['default']
     'LiveMarketData': typeof import("../components/LiveMarketData.vue")['default']
+    'TradingInterface': typeof import("../components/TradingInterface.vue")['default']
     'NuxtWelcome': typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']
     'NuxtLayout': typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
     'NuxtErrorBoundary': typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue")['default']
@@ -49,7 +52,10 @@ interface _GlobalComponents {
     'LazyCryptoFooter': LazyComponent<typeof import("../components/CryptoFooter.vue")['default']>
     'LazyCryptoHeader': LazyComponent<typeof import("../components/CryptoHeader.vue")['default']>
     'LazyCryptoHero': LazyComponent<typeof import("../components/CryptoHero.vue")['default']>
+    'LazyGameDashboard': LazyComponent<typeof import("../components/GameDashboard.vue")['default']>
+    'LazyGameResults': LazyComponent<typeof import("../components/GameResults.vue")['default']>
     'LazyLiveMarketData': LazyComponent<typeof import("../components/LiveMarketData.vue")['default']>
+    'LazyTradingInterface': LazyComponent<typeof import("../components/TradingInterface.vue")['default']>
     'LazyNuxtWelcome': LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']>
     'LazyNuxtLayout': LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']>
     'LazyNuxtErrorBoundary': LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue")['default']>
@@ -86,7 +92,10 @@ export const CryptoFeatures: typeof import("../components/CryptoFeatures.vue")['
 export const CryptoFooter: typeof import("../components/CryptoFooter.vue")['default']
 export const CryptoHeader: typeof import("../components/CryptoHeader.vue")['default']
 export const CryptoHero: typeof import("../components/CryptoHero.vue")['default']
+export const GameDashboard: typeof import("../components/GameDashboard.vue")['default']
+export const GameResults: typeof import("../components/GameResults.vue")['default']
 export const LiveMarketData: typeof import("../components/LiveMarketData.vue")['default']
+export const TradingInterface: typeof import("../components/TradingInterface.vue")['default']
 export const NuxtWelcome: typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']
 export const NuxtLayout: typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
 export const NuxtErrorBoundary: typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue")['default']
@@ -117,7 +126,10 @@ export const LazyCryptoFeatures: LazyComponent<typeof import("../components/Cryp
 export const LazyCryptoFooter: LazyComponent<typeof import("../components/CryptoFooter.vue")['default']>
 export const LazyCryptoHeader: LazyComponent<typeof import("../components/CryptoHeader.vue")['default']>
 export const LazyCryptoHero: LazyComponent<typeof import("../components/CryptoHero.vue")['default']>
+export const LazyGameDashboard: LazyComponent<typeof import("../components/GameDashboard.vue")['default']>
+export const LazyGameResults: LazyComponent<typeof import("../components/GameResults.vue")['default']>
 export const LazyLiveMarketData: LazyComponent<typeof import("../components/LiveMarketData.vue")['default']>
+export const LazyTradingInterface: LazyComponent<typeof import("../components/TradingInterface.vue")['default']>
 export const LazyNuxtWelcome: LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']>
 export const LazyNuxtLayout: LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']>
 export const LazyNuxtErrorBoundary: LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue")['default']>
