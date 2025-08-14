@@ -5,27 +5,27 @@
 /* Custom component classes */
 @layer components {
   .btn-primary {
-    @apply bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-neon-blue shadow-neon-blue/50 border border-primary-400/30;
+    @apply bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-bold py-3 px-6 rounded-xl transition-colors duration-200;
   }
   
   .btn-secondary {
-    @apply bg-gradient-to-r from-secondary-500 to-secondary-600 hover:from-secondary-600 hover:to-secondary-700 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-neon-pink shadow-neon-pink/50 border border-secondary-400/30;
+    @apply bg-gradient-to-r from-secondary-500 to-secondary-600 hover:from-secondary-600 hover:to-secondary-700 text-white font-bold py-3 px-6 rounded-xl transition-colors duration-200;
   }
   
   .btn-accent {
-    @apply bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-neon-green shadow-neon-green/50 border border-accent-400/30;
+    @apply bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white font-bold py-3 px-6 rounded-xl transition-colors duration-200;
   }
   
   .btn-outline {
-    @apply border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-neon-blue;
+    @apply border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white font-bold py-3 px-6 rounded-xl transition-colors duration-200;
   }
   
   .card-glass {
-    @apply dark:bg-black/40 bg-white/90 backdrop-blur-xl dark:border-primary-400/30 border-primary-400/20 rounded-2xl shadow-cyber-glow hover:shadow-hologram transition-all duration-300 border-2;
+    @apply dark:bg-black/40 bg-white/90 backdrop-blur-sm dark:border-primary-400/20 border-primary-400/10 rounded-xl transition-colors duration-200;
   }
   
   .card-modern {
-    @apply bg-gradient-to-br from-dark-900 to-dark-800 rounded-2xl shadow-matrix hover:shadow-cyber-glow transition-all duration-300 transform hover:-translate-y-2 border border-primary-400/20;
+    @apply bg-gradient-to-br from-dark-900 to-dark-800 rounded-xl shadow-lg transition-colors duration-200;
   }
   
   .text-gradient-primary {
@@ -40,25 +40,25 @@
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
   
-  /* Gaming-specific components */
+  /* Gaming-specific components - Simplified */
   .game-card {
-    @apply bg-gradient-to-br from-dark-900/80 to-dark-800/80 backdrop-blur-xl border-2 border-primary-400/30 rounded-2xl shadow-cyber-glow hover:shadow-hologram transition-all duration-300 transform hover:scale-105;
+    @apply bg-gradient-to-br from-dark-900/80 to-dark-800/80 backdrop-blur-sm border border-primary-400/20 rounded-xl transition-colors duration-200;
   }
   
   .neon-border {
-    @apply border-2 border-primary-400/50 shadow-neon-blue/30;
+    @apply border border-primary-400/30;
   }
   
   .cyber-button {
-    @apply bg-gradient-to-r from-primary-500 to-primary-400 text-black font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-neon-blue border border-primary-400/50;
+    @apply bg-gradient-to-r from-primary-500 to-primary-400 text-black font-bold py-3 px-6 rounded-xl transition-colors duration-200;
   }
   
   .matrix-bg {
-    @apply bg-gradient-to-br from-green-900/20 via-green-800/10 to-green-900/20 border border-accent-400/20;
+    @apply bg-green-900/10 border border-green-400/20 rounded-lg;
   }
   
   .hologram-bg {
-    @apply bg-gradient-to-br from-purple-900/20 via-primary-800/10 to-secondary-800/20 border border-secondary-400/20;
+    @apply bg-purple-900/10 border border-purple-400/20 rounded-lg;
   }
 }
 
@@ -72,31 +72,27 @@
   @apply absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent animate-shimmer;
 }
 
-/* Floating elements - Performance optimized */
+/* Floating elements - Simplified for performance */
 .floating {
   @apply animate-float;
-  will-change: transform;
 }
 
 /* Performance optimizations */
 .animate-float {
-  animation: float 8s ease-in-out infinite;
-  will-change: transform;
+  animation: float 10s ease-in-out infinite;
 }
 
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-5px); }
 }
 
 .animate-pulse-slow {
-  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  will-change: opacity;
+  animation: pulse 5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 .animate-bounce-slow {
-  animation: bounce 3s infinite;
-  will-change: transform;
+  animation: bounce 4s infinite;
 }
 
 /* Crypto-specific styles */
