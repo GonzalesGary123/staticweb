@@ -13,11 +13,11 @@
             </div>
             <div>
               <h3 class="text-xl font-bold text-white">CryptoGroup</h3>
-              <p class="text-sm text-white/60">Future of Finance</p>
+              <p class="text-sm text-white/60">Premium Crypto Community</p>
             </div>
           </div>
           <p class="text-white/70 mb-6 max-w-md">
-            Join the most innovative crypto community and stay ahead of the digital economy revolution with real-time insights and expert analysis.
+            Join the most innovative crypto community and connect with thousands of enthusiasts, traders, and experts from around the world.
           </p>
           <div class="flex space-x-4">
             <a href="#" class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors duration-200">
@@ -40,21 +40,21 @@
           <h4 class="text-lg font-semibold text-white mb-6">Quick Links</h4>
           <ul class="space-y-3">
             <li><a href="#home" class="text-white/70 hover:text-white transition-colors duration-200">Home</a></li>
-            <li><a href="#market" class="text-white/70 hover:text-white transition-colors duration-200">Market Data</a></li>
-            <li><a href="#features" class="text-white/70 hover:text-white transition-colors duration-200">Features</a></li>
             <li><a href="#about" class="text-white/70 hover:text-white transition-colors duration-200">About</a></li>
-            <li><a href="#demo" class="text-white/70 hover:text-white transition-colors duration-200">Demo</a></li>
+            <li><a href="#features" class="text-white/70 hover:text-white transition-colors duration-200">Features</a></li>
+            <li><a href="#membership" class="text-white/70 hover:text-white transition-colors duration-200">Membership</a></li>
+            <li><a href="#testimonials" class="text-white/70 hover:text-white transition-colors duration-200">Success Stories</a></li>
           </ul>
         </div>
 
-        <!-- Resources -->
+        <!-- Community -->
         <div>
-          <h4 class="text-lg font-semibold text-white mb-6">Resources</h4>
+          <h4 class="text-lg font-semibold text-white mb-6">Community</h4>
           <ul class="space-y-3">
-            <li><a href="#" class="text-white/70 hover:text-white transition-colors duration-200">Help Center</a></li>
-            <li><a href="#" class="text-white/70 hover:text-white transition-colors duration-200">API Documentation</a></li>
-            <li><a href="#" class="text-white/70 hover:text-white transition-colors duration-200">Trading Guide</a></li>
-            <li><a href="#" class="text-white/70 hover:text-white transition-colors duration-200">Security</a></li>
+            <li><a href="#" class="text-white/70 hover:text-white transition-colors duration-200">Discord Server</a></li>
+            <li><a href="#" class="text-white/70 hover:text-white transition-colors duration-200">Telegram Groups</a></li>
+            <li><a href="#" class="text-white/70 hover:text-white transition-colors duration-200">Forum</a></li>
+            <li><a href="#" class="text-white/70 hover:text-white transition-colors duration-200">Events</a></li>
             <li><a href="#" class="text-white/70 hover:text-white transition-colors duration-200">Blog</a></li>
           </ul>
         </div>
@@ -64,10 +64,10 @@
       <div class="card-glass p-8 mb-12">
         <div class="text-center">
           <h3 class="text-2xl font-bold text-white mb-4">
-            Stay Updated with <span class="text-gradient-primary">Crypto Trends</span>
+            Join Our <span class="text-gradient-primary">Crypto Community</span>
           </h3>
           <p class="text-white/70 mb-6 max-w-2xl mx-auto">
-            Get the latest crypto news, market insights, and exclusive updates delivered directly to your inbox.
+            Get exclusive access to crypto insights, trading signals, and community updates. Join thousands of successful crypto enthusiasts.
           </p>
           <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
             <input 
@@ -76,8 +76,8 @@
               class="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-primary-500 transition-colors duration-200"
             >
             <button class="btn-primary px-8 py-3">
-              <span class="mr-2">📧</span>
-              Subscribe
+              <span class="mr-2">🚀</span>
+              Join Now
             </button>
           </div>
         </div>
@@ -103,9 +103,15 @@
 </template>
 
 <script setup>
-// Component logic can be added here
+// Component logic can be added here if needed
 </script>
 
 <style scoped>
-/* Component-specific styles can be added here if needed */
+.card-glass {
+  @apply bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl;
+}
+
+.btn-primary {
+  @apply bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/25 transform hover:-translate-y-1;
+}
 </style>
