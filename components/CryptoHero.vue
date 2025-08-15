@@ -14,149 +14,172 @@
           <!-- Badge -->
           <div class="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-sm font-medium text-white/80">
             <span class="w-2 h-2 bg-accent-400 rounded-full mr-2 animate-pulse"></span>
-            Live Crypto Data • Real-time Updates
+            Join 10,000+ Crypto Enthusiasts
           </div>
 
           <!-- Main Heading -->
           <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
-            <span class="text-white">Join the Future of</span>
+            <span class="text-white">Join the Ultimate</span>
             <br>
-            <span class="text-gradient-primary">Cryptocurrency</span>
+            <span class="text-gradient-primary">Crypto Group</span>
           </h1>
 
           <!-- Subtitle -->
           <p class="text-xl md:text-2xl text-white/80 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-            Connect with crypto enthusiasts, get real-time market insights, and stay ahead of the digital economy revolution.
+            Connect with crypto experts, get exclusive insights, and access premium opportunities in our thriving community of traders, developers, and investors.
           </p>
 
-          <!-- Market Stats -->
-          <div v-if="!loading && marketData.length > 0" class="grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0">
-            <div class="market-stat">
-              <div class="text-2xl font-bold text-white">{{ formatMarketCap(totalMarketCap) }}</div>
-              <div class="text-sm text-white/60">Market Cap</div>
+          <!-- Community Stats -->
+          <div class="grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0">
+            <div class="community-stat">
+              <div class="text-2xl font-bold text-white">10K+</div>
+              <div class="text-sm text-white/60">Active Members</div>
             </div>
-            <div class="market-stat">
-              <div class="text-2xl font-bold text-white">{{ formatVolume(totalVolume) }}</div>
-              <div class="text-sm text-white/60">24h Volume</div>
+            <div class="community-stat">
+              <div class="text-2xl font-bold text-white">50+</div>
+              <div class="text-sm text-white/60">Countries</div>
             </div>
-            <div class="market-stat">
-              <div class="text-2xl font-bold text-white">{{ marketData.length }}+</div>
-              <div class="text-sm text-white/60">Coins</div>
+            <div class="community-stat">
+              <div class="text-2xl font-bold text-white">24/7</div>
+              <div class="text-sm text-white/60">Support</div>
             </div>
           </div>
 
           <!-- CTA Buttons -->
           <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <a href="#market" class="btn-primary inline-flex items-center justify-center">
+            <a href="#membership" class="btn-primary inline-flex items-center justify-center">
               <span class="mr-2">🚀</span>
-              Explore Market
+              Join Community
             </a>
-            <a href="#demo" class="btn-outline inline-flex items-center justify-center">
-              <span class="mr-2">🔧</span>
-              Try Demo
+            <a href="#features" class="btn-outline inline-flex items-center justify-center">
+              <span class="mr-2">🔍</span>
+              Explore Features
             </a>
           </div>
 
-          <!-- Last Updated -->
-          <div v-if="lastUpdated" class="flex items-center justify-center lg:justify-start text-sm text-white/60">
-            <div class="w-2 h-2 bg-accent-400 rounded-full mr-2 animate-pulse"></div>
-            Last updated: {{ formatTime(lastUpdated) }}
+          <!-- Trust Indicators -->
+          <div class="flex items-center justify-center lg:justify-start space-x-6 text-sm text-white/60">
+            <div class="flex items-center">
+              <span class="w-4 h-4 bg-green-500 rounded-full mr-2"></span>
+              Verified Members Only
+            </div>
+            <div class="flex items-center">
+              <span class="w-4 h-4 bg-blue-500 rounded-full mr-2"></span>
+              Secure & Private
+            </div>
           </div>
         </div>
 
         <!-- Right Content -->
         <div class="relative">
-          <!-- Live Crypto Cards -->
-          <div v-if="!loading && marketData.length > 0" class="space-y-4">
-            <div 
-              v-for="(coin, index) in marketData.slice(0, 6)" 
-              :key="coin.id"
-              class="crypto-card transform transition-all duration-200 hover:scale-105"
-              :class="coin.price_change_percentage_24h > 0 ? 'positive' : 'negative'"
-              :style="{ animationDelay: `${index * 0.05}s` }"
-            >
-              <div class="flex items-center justify-between mb-4">
+          <!-- Community Preview Cards -->
+          <div class="space-y-4">
+            <!-- Discord Card -->
+            <div class="community-preview-card discord">
+              <div class="flex items-center justify-between mb-3">
                 <div class="flex items-center space-x-3">
-                  <img :src="coin.image" :alt="coin.name" class="w-10 h-10 rounded-full">
+                  <div class="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center">
+                    <span class="text-white text-xl">💬</span>
+                  </div>
                   <div>
-                    <h3 class="font-semibold text-gray-900">{{ coin.name }}</h3>
-                    <p class="text-sm text-gray-600">{{ coin.symbol }}</p>
+                    <h3 class="font-semibold text-white">Discord Community</h3>
+                    <p class="text-sm text-white/60">5,000+ online now</p>
                   </div>
                 </div>
-                <div class="bg-gradient-to-r from-primary-500 to-secondary-500 text-white text-xs font-bold px-2 py-1 rounded-full">
-                  #{{ coin.market_cap_rank }}
+                <div class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                  Live
                 </div>
               </div>
-              
-              <div class="mb-4">
-                <div class="text-2xl font-bold text-gray-900 mb-2">{{ formatPrice(coin.current_price) }}</div>
-                <div class="flex items-center space-x-2">
-                  <span class="text-lg">{{ getPriceChangeIcon(coin.price_change_percentage_24h) }}</span>
-                  <span 
-                    class="font-semibold text-sm"
-                    :class="coin.price_change_percentage_24h > 0 ? 'text-green-600' : 'text-red-600'"
-                  >
-                    {{ formatPercentage(coin.price_change_percentage_24h) }}
-                  </span>
+              <div class="text-sm text-white/80">
+                <p>🔥 Hot discussion: Bitcoin ETF impact</p>
+                <p>📊 24 new market alerts today</p>
+              </div>
+            </div>
+
+            <!-- Telegram Card -->
+            <div class="community-preview-card telegram">
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center space-x-3">
+                  <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
+                    <span class="text-white text-xl">📱</span>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-white">Telegram Groups</h3>
+                    <p class="text-sm text-white/60">3,000+ members</p>
+                  </div>
+                </div>
+                <div class="bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                  Active
                 </div>
               </div>
-              
-              <div class="grid grid-cols-2 gap-4 text-sm">
-                <div>
-                  <span class="text-gray-600">Market Cap:</span>
-                  <div class="font-semibold text-gray-900">{{ formatMarketCap(coin.market_cap) }}</div>
+              <div class="text-sm text-white/80">
+                <p>💎 New presale opportunity</p>
+                <p>🎯 Expert trading signals</p>
+              </div>
+            </div>
+
+            <!-- Forum Card -->
+            <div class="community-preview-card forum">
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center space-x-3">
+                  <div class="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center">
+                    <span class="text-white text-xl">📚</span>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-white">Knowledge Forum</h3>
+                    <p class="text-sm text-white/60">1,000+ topics</p>
+                  </div>
                 </div>
-                <div>
-                  <span class="text-gray-600">Volume:</span>
-                  <div class="font-semibold text-gray-900">{{ formatVolume(coin.total_volume) }}</div>
+                <div class="bg-purple-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                  Updated
                 </div>
+              </div>
+              <div class="text-sm text-white/80">
+                <p>📖 New DeFi guide published</p>
+                <p>🎓 Beginner course available</p>
               </div>
             </div>
           </div>
 
-          <!-- Loading State -->
-          <div v-else-if="loading" class="space-y-4">
-            <div v-for="i in 6" :key="i" class="loading-shimmer h-32"></div>
-          </div>
-
-          <!-- Floating Elements - Reduced for performance -->
-          <div class="absolute -top-10 -right-10 w-16 h-16 bg-gradient-to-br from-primary-400 to-secondary-400 rounded-full opacity-15 animate-float"></div>
+          <!-- Floating Elements -->
+          <div class="absolute -top-10 -right-10 w-20 h-20 bg-gradient-to-br from-primary-400 to-secondary-400 rounded-full opacity-20 animate-float"></div>
+          <div class="absolute -bottom-10 -left-10 w-16 h-16 bg-gradient-to-br from-accent-400 to-primary-400 rounded-full opacity-20 animate-float" style="animation-delay: 2s;"></div>
         </div>
-      </div>
-    </div>
-
-    <!-- Scroll Indicator -->
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
-      <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-        <div class="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse"></div>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-const {
-  marketData,
-  loading,
-  lastUpdated,
-  totalMarketCap,
-  totalVolume,
-  formatPrice,
-  formatPercentage,
-  formatMarketCap,
-  formatVolume,
-  getPriceChangeIcon
-} = useCrypto()
-
-const formatTime = (date) => {
-  return new Intl.DateTimeFormat('en-US', {
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit'
-  }).format(date)
-}
+// Component logic can be added here if needed
 </script>
 
 <style scoped>
-/* Component-specific styles can be added here if needed */
+.community-stat {
+  @apply text-center p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl;
+}
+
+.community-preview-card {
+  @apply bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 transform transition-all duration-200 hover:scale-105;
+}
+
+.community-preview-card.discord {
+  @apply border-indigo-500/30;
+}
+
+.community-preview-card.telegram {
+  @apply border-blue-500/30;
+}
+
+.community-preview-card.forum {
+  @apply border-purple-500/30;
+}
+
+.btn-primary {
+  @apply bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/25 transform hover:-translate-y-1;
+}
+
+.btn-outline {
+  @apply border-2 border-white/20 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:bg-white/10 hover:border-white/40;
+}
 </style>

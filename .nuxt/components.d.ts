@@ -18,6 +18,8 @@ interface _GlobalComponents {
     'CryptoFooter': typeof import("../components/CryptoFooter.vue")['default']
     'CryptoHeader': typeof import("../components/CryptoHeader.vue")['default']
     'CryptoHero': typeof import("../components/CryptoHero.vue")['default']
+    'CryptoMembership': typeof import("../components/CryptoMembership.vue")['default']
+    'CryptoTestimonials': typeof import("../components/CryptoTestimonials.vue")['default']
     'GameDashboard': typeof import("../components/GameDashboard.vue")['default']
     'GameResults': typeof import("../components/GameResults.vue")['default']
     'LiveMarketData': typeof import("../components/LiveMarketData.vue")['default']
@@ -52,6 +54,8 @@ interface _GlobalComponents {
     'LazyCryptoFooter': LazyComponent<typeof import("../components/CryptoFooter.vue")['default']>
     'LazyCryptoHeader': LazyComponent<typeof import("../components/CryptoHeader.vue")['default']>
     'LazyCryptoHero': LazyComponent<typeof import("../components/CryptoHero.vue")['default']>
+    'LazyCryptoMembership': LazyComponent<typeof import("../components/CryptoMembership.vue")['default']>
+    'LazyCryptoTestimonials': LazyComponent<typeof import("../components/CryptoTestimonials.vue")['default']>
     'LazyGameDashboard': LazyComponent<typeof import("../components/GameDashboard.vue")['default']>
     'LazyGameResults': LazyComponent<typeof import("../components/GameResults.vue")['default']>
     'LazyLiveMarketData': LazyComponent<typeof import("../components/LiveMarketData.vue")['default']>
@@ -92,6 +96,8 @@ export const CryptoFeatures: typeof import("../components/CryptoFeatures.vue")['
 export const CryptoFooter: typeof import("../components/CryptoFooter.vue")['default']
 export const CryptoHeader: typeof import("../components/CryptoHeader.vue")['default']
 export const CryptoHero: typeof import("../components/CryptoHero.vue")['default']
+export const CryptoMembership: typeof import("../components/CryptoMembership.vue")['default']
+export const CryptoTestimonials: typeof import("../components/CryptoTestimonials.vue")['default']
 export const GameDashboard: typeof import("../components/GameDashboard.vue")['default']
 export const GameResults: typeof import("../components/GameResults.vue")['default']
 export const LiveMarketData: typeof import("../components/LiveMarketData.vue")['default']
@@ -126,6 +132,8 @@ export const LazyCryptoFeatures: LazyComponent<typeof import("../components/Cryp
 export const LazyCryptoFooter: LazyComponent<typeof import("../components/CryptoFooter.vue")['default']>
 export const LazyCryptoHeader: LazyComponent<typeof import("../components/CryptoHeader.vue")['default']>
 export const LazyCryptoHero: LazyComponent<typeof import("../components/CryptoHero.vue")['default']>
+export const LazyCryptoMembership: LazyComponent<typeof import("../components/CryptoMembership.vue")['default']>
+export const LazyCryptoTestimonials: LazyComponent<typeof import("../components/CryptoTestimonials.vue")['default']>
 export const LazyGameDashboard: LazyComponent<typeof import("../components/GameDashboard.vue")['default']>
 export const LazyGameResults: LazyComponent<typeof import("../components/GameResults.vue")['default']>
 export const LazyLiveMarketData: LazyComponent<typeof import("../components/LiveMarketData.vue")['default']>
