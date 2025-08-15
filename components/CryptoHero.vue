@@ -2,9 +2,9 @@
   <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
     <!-- Background Elements -->
     <div class="absolute inset-0">
-      <div class="absolute top-20 left-10 w-72 h-72 bg-sky-400/20 rounded-full blur-3xl animate-pulse-slow"></div>
-      <div class="absolute bottom-20 right-10 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 1s;"></div>
-      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-sky-300/15 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 2s;"></div>
+      <div class="absolute top-20 left-10 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
+      <div class="absolute bottom-20 right-10 w-40 h-40 bg-orange-600/10 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 1s;"></div>
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-orange-400/5 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 2s;"></div>
     </div>
 
     <div class="container-custom relative z-10">
@@ -12,138 +12,138 @@
         <!-- Left Content -->
         <div class="text-center lg:text-left space-y-8">
           <!-- Badge -->
-          <div class="inline-flex items-center px-4 py-2 bg-sky-100/80 backdrop-blur-sm border border-sky-300/50 rounded-full text-sm font-medium text-sky-700 shadow-lg">
-            <span class="w-2 h-2 bg-sky-500 rounded-full mr-2 animate-pulse"></span>
-            Join 10,000+ Crypto Enthusiasts
+          <div class="inline-flex items-center px-4 py-2 bg-orange-500/20 backdrop-blur-sm border border-orange-500/50 rounded-full text-sm font-medium text-orange-300 shadow-lg animate-glow">
+            <span class="w-2 h-2 bg-orange-400 rounded-full mr-2 animate-pulse"></span>
+            JOIN 10,000+ CRYPTO WARRIORS
           </div>
 
           <!-- Main Heading -->
-          <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
-            <span class="text-gray-900">Join the Ultimate</span>
+          <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight font-orbitron">
+            <span class="text-white">ENTER THE</span>
             <br>
-            <span class="text-gradient-primary">Crypto Group</span>
+            <span class="text-gradient-primary animate-neon">CRYPTO ARENA</span>
           </h1>
 
           <!-- Subtitle -->
-          <p class="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-            Connect with crypto experts, get exclusive insights, and access premium opportunities in our thriving community of traders, developers, and investors.
+          <p class="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            Dominate the crypto battlefield with expert strategies, real-time signals, and an elite community of traders. Level up your crypto game.
           </p>
 
-          <!-- Community Stats -->
+          <!-- Gaming Stats -->
           <div class="grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0">
-            <div class="community-stat">
-              <div class="text-2xl font-bold text-sky-600">10K+</div>
-              <div class="text-sm text-gray-600">Active Members</div>
+            <div class="gaming-stat">
+              <div class="text-2xl font-bold text-orange-400 font-orbitron">10K+</div>
+              <div class="text-sm text-gray-400">ACTIVE PLAYERS</div>
             </div>
-            <div class="community-stat">
-              <div class="text-2xl font-bold text-sky-600">50+</div>
-              <div class="text-sm text-gray-600">Countries</div>
+            <div class="gaming-stat">
+              <div class="text-2xl font-bold text-orange-400 font-orbitron">50+</div>
+              <div class="text-sm text-gray-400">BATTLE ZONES</div>
             </div>
-            <div class="community-stat">
-              <div class="text-2xl font-bold text-sky-600">24/7</div>
-              <div class="text-sm text-gray-600">Support</div>
+            <div class="gaming-stat">
+              <div class="text-2xl font-bold text-orange-400 font-orbitron">24/7</div>
+              <div class="text-sm text-gray-400">SUPPORT</div>
             </div>
           </div>
 
           <!-- CTA Buttons -->
           <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <a href="#membership" class="btn-primary inline-flex items-center justify-center">
-              <span class="mr-2">🚀</span>
-              Join Community
+            <a href="#membership" class="btn-primary inline-flex items-center justify-center text-lg px-8 py-4">
+              <span class="mr-2">⚔️</span>
+              ENTER ARENA
             </a>
-            <a href="#features" class="btn-outline inline-flex items-center justify-center">
-              <span class="mr-2">🔍</span>
-              Explore Features
+            <a href="#features" class="btn-outline inline-flex items-center justify-center text-lg px-8 py-4">
+              <span class="mr-2">🎯</span>
+              VIEW SKILLS
             </a>
           </div>
 
-          <!-- Trust Indicators -->
-          <div class="flex items-center justify-center lg:justify-start space-x-6 text-sm text-gray-500">
+          <!-- Gaming Features -->
+          <div class="flex items-center justify-center lg:justify-start space-x-6 text-sm text-gray-400">
             <div class="flex items-center">
-              <span class="w-4 h-4 bg-green-500 rounded-full mr-2"></span>
-              Verified Members Only
+              <span class="w-4 h-4 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+              VERIFIED PLAYERS ONLY
             </div>
             <div class="flex items-center">
-              <span class="w-4 h-4 bg-sky-500 rounded-full mr-2"></span>
-              Secure & Private
+              <span class="w-4 h-4 bg-orange-500 rounded-full mr-2 animate-pulse"></span>
+              SECURE & PRIVATE
             </div>
           </div>
         </div>
-
+        
         <!-- Right Content -->
         <div class="relative">
-          <!-- Community Preview Cards -->
+          <!-- Gaming Interface Preview -->
           <div class="space-y-4">
-            <!-- Discord Card -->
-            <div class="community-preview-card discord">
+            <!-- Trading Terminal Card -->
+            <div class="gaming-interface-card trading">
               <div class="flex items-center justify-between mb-3">
                 <div class="flex items-center space-x-3">
-                  <div class="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center shadow-lg">
+                  <div class="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center shadow-lg border border-green-500/50">
+                    <span class="text-white text-xl">📈</span>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-white font-orbitron">TRADING TERMINAL</h3>
+                    <p class="text-sm text-green-400">LIVE BATTLE STATION</p>
+                  </div>
+                </div>
+                <div class="bg-green-500 text-black text-xs font-bold px-2 py-1 rounded-full font-orbitron">
+                  ONLINE
+                </div>
+              </div>
+              <div class="text-sm text-gray-300">
+                <p>🔥 HOT: Bitcoin ETF momentum</p>
+                <p>⚡ 24 new signals today</p>
+              </div>
+            </div>
+
+            <!-- Leaderboard Card -->
+            <div class="gaming-interface-card leaderboard">
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center space-x-3">
+                  <div class="w-10 h-10 bg-orange-600 rounded-lg flex items-center justify-center shadow-lg border border-orange-500/50">
+                    <span class="text-white text-xl">🏆</span>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-white font-orbitron">LEADERBOARD</h3>
+                    <p class="text-sm text-orange-400">TOP PERFORMERS</p>
+                  </div>
+                </div>
+                <div class="bg-orange-500 text-black text-xs font-bold px-2 py-1 rounded-full font-orbitron">
+                  LIVE
+                </div>
+              </div>
+              <div class="text-sm text-gray-300">
+                <p>🥇 #1: CryptoMaster - +450%</p>
+                <p>🥈 #2: TradingNinja - +320%</p>
+              </div>
+            </div>
+
+            <!-- Arena Chat Card -->
+            <div class="gaming-interface-card chat">
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center space-x-3">
+                  <div class="w-10 h-10 bg-purple-600 rounded-lg flex items-center justify-center shadow-lg border border-purple-500/50">
                     <span class="text-white text-xl">💬</span>
                   </div>
                   <div>
-                    <h3 class="font-semibold text-gray-900">Discord Community</h3>
-                    <p class="text-sm text-gray-600">5,000+ online now</p>
+                    <h3 class="font-semibold text-white font-orbitron">ARENA CHAT</h3>
+                    <p class="text-sm text-purple-400">STRATEGY ROOM</p>
                   </div>
                 </div>
-                <div class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full">
-                  Live
+                <div class="bg-purple-500 text-black text-xs font-bold px-2 py-1 rounded-full font-orbitron">
+                  ACTIVE
                 </div>
               </div>
-              <div class="text-sm text-gray-600">
-                <p>🔥 Hot discussion: Bitcoin ETF impact</p>
-                <p>📊 24 new market alerts today</p>
-              </div>
-            </div>
-
-            <!-- Telegram Card -->
-            <div class="community-preview-card telegram">
-              <div class="flex items-center justify-between mb-3">
-                <div class="flex items-center space-x-3">
-                  <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center shadow-lg">
-                    <span class="text-white text-xl">📱</span>
-                  </div>
-                  <div>
-                    <h3 class="font-semibold text-gray-900">Telegram Groups</h3>
-                    <p class="text-sm text-gray-600">3,000+ members</p>
-                  </div>
-                </div>
-                <div class="bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded-full">
-                  Active
-                </div>
-              </div>
-              <div class="text-sm text-gray-600">
-                <p>💎 New presale opportunity</p>
-                <p>🎯 Expert trading signals</p>
-              </div>
-            </div>
-
-            <!-- Forum Card -->
-            <div class="community-preview-card forum">
-              <div class="flex items-center justify-between mb-3">
-                <div class="flex items-center space-x-3">
-                  <div class="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center shadow-lg">
-                    <span class="text-white text-xl">📚</span>
-                  </div>
-                  <div>
-                    <h3 class="font-semibold text-gray-900">Knowledge Forum</h3>
-                    <p class="text-sm text-gray-600">1,000+ topics</p>
-                  </div>
-                </div>
-                <div class="bg-purple-500 text-white text-xs font-bold px-2 py-1 rounded-full">
-                  Updated
-                </div>
-              </div>
-              <div class="text-sm text-gray-600">
-                <p>📖 New DeFi guide published</p>
-                <p>🎓 Beginner course available</p>
+              <div class="text-sm text-gray-300">
+                <p>🎮 New DeFi strategy shared</p>
+                <p>⚔️ Battle plan for ETH</p>
               </div>
             </div>
           </div>
 
-          <!-- Floating Elements -->
-          <div class="absolute -top-10 -right-10 w-20 h-20 bg-gradient-to-br from-sky-400 to-blue-400 rounded-full opacity-20 animate-float"></div>
-          <div class="absolute -bottom-10 -left-10 w-16 h-16 bg-gradient-to-br from-sky-300 to-blue-300 rounded-full opacity-20 animate-float" style="animation-delay: 2s;"></div>
+          <!-- Floating Gaming Elements -->
+          <div class="absolute -top-10 -right-10 w-20 h-20 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full opacity-20 animate-float"></div>
+          <div class="absolute -bottom-10 -left-10 w-16 h-16 bg-gradient-to-br from-orange-300 to-orange-400 rounded-full opacity-20 animate-float" style="animation-delay: 2s;"></div>
         </div>
       </div>
     </div>
@@ -155,31 +155,91 @@
 </script>
 
 <style scoped>
-.community-stat {
-  @apply text-center p-4 bg-white/80 backdrop-blur-sm border border-sky-200/50 rounded-xl shadow-lg;
+.gaming-stat {
+  text-align: center;
+  padding: 1rem;
+  background: rgba(20, 20, 20, 0.9);
+  backdrop-filter: blur(8px);
+  border: 2px solid rgba(255, 107, 53, 0.3);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 20px rgba(255, 107, 53, 0.1), inset 0 0 20px rgba(255, 107, 53, 0.05);
 }
 
-.community-preview-card {
-  @apply bg-white/90 backdrop-blur-sm border border-sky-200/50 rounded-xl p-4 transform transition-all duration-200 hover:scale-105 shadow-lg;
+.gaming-interface-card {
+  background: rgba(20, 20, 20, 0.9);
+  backdrop-filter: blur(8px);
+  border: 2px solid rgba(255, 107, 53, 0.3);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  transform: transition-all duration-200;
+  box-shadow: 0 0 20px rgba(255, 107, 53, 0.1), inset 0 0 20px rgba(255, 107, 53, 0.05);
 }
 
-.community-preview-card.discord {
-  @apply border-indigo-300/50;
+.gaming-interface-card:hover {
+  transform: scale(1.05);
+  border-color: rgba(255, 107, 53, 0.8);
+  box-shadow: 0 0 30px rgba(255, 107, 53, 0.3), inset 0 0 30px rgba(255, 107, 53, 0.1);
 }
 
-.community-preview-card.telegram {
-  @apply border-blue-300/50;
+.gaming-interface-card.trading {
+  border-color: rgba(34, 197, 94, 0.3);
 }
 
-.community-preview-card.forum {
-  @apply border-purple-300/50;
+.gaming-interface-card.trading:hover {
+  border-color: rgba(34, 197, 94, 0.8);
+  box-shadow: 0 0 30px rgba(34, 197, 94, 0.3), inset 0 0 30px rgba(34, 197, 94, 0.1);
+}
+
+.gaming-interface-card.leaderboard {
+  border-color: rgba(255, 107, 53, 0.3);
+}
+
+.gaming-interface-card.chat {
+  border-color: rgba(147, 51, 234, 0.3);
+}
+
+.gaming-interface-card.chat:hover {
+  border-color: rgba(147, 51, 234, 0.8);
+  box-shadow: 0 0 30px rgba(147, 51, 234, 0.3), inset 0 0 30px rgba(147, 51, 234, 0.1);
 }
 
 .btn-primary {
-  @apply bg-gradient-to-r from-sky-500 to-blue-600 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-sky-500/25 transform hover:-translate-y-1 hover:scale-105;
+  background: linear-gradient(135deg, #ff6b35, #ff8c42);
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(255, 107, 53, 0.3);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 20px rgba(255, 107, 53, 0.4);
+  transform: translateY(-2px);
+  border-color: rgba(255, 107, 53, 0.8);
 }
 
 .btn-outline {
-  @apply border-2 border-sky-500/50 text-sky-600 font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:bg-sky-500 hover:text-white hover:border-sky-500 hover:shadow-lg;
+  border: 2px solid rgba(255, 107, 53, 0.5);
+  color: #ff6b35;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.btn-outline:hover {
+  background: #ff6b35;
+  color: white;
+  border-color: #ff6b35;
+  box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+}
+
+.font-orbitron {
+  font-family: 'Orbitron', monospace;
 }
 </style>

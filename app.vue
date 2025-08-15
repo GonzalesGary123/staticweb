@@ -1,16 +1,28 @@
 <template>
-  <div class="min-h-screen transition-colors duration-300 bg-gradient-to-br from-sky-50 via-white to-sky-100 text-gray-900">
+  <div class="min-h-screen transition-colors duration-300 bg-black text-white overflow-hidden">
     <!-- Gaming Background Elements -->
     <div class="fixed inset-0 overflow-hidden pointer-events-none">
-      <!-- Geometric Gaming Patterns -->
-      <div class="absolute top-20 left-10 w-72 h-72 bg-sky-400/20 rounded-full blur-3xl animate-pulse-slow"></div>
-      <div class="absolute bottom-20 right-10 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 1s;"></div>
-      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-sky-300/15 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 2s;"></div>
-      
-      <!-- Gaming Grid Pattern -->
-      <div class="absolute inset-0 opacity-30">
-        <div class="w-full h-full" style="background-image: radial-gradient(circle at 1px 1px, #e0f2fe 1px, transparent 0); background-size: 60px 60px;"></div>
+      <!-- Hexagonal Grid Pattern -->
+      <div class="absolute inset-0 opacity-20">
+        <div class="w-full h-full" style="background-image: repeating-linear-gradient(60deg, transparent, transparent 35px, rgba(255, 107, 53, 0.3) 35px, rgba(255, 107, 53, 0.3) 36px), repeating-linear-gradient(150deg, transparent, transparent 35px, rgba(255, 107, 53, 0.3) 35px, rgba(255, 107, 53, 0.3) 36px); background-size: 60px 60px;"></div>
       </div>
+      
+      <!-- Neon Accent Lines -->
+      <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-orange-500 to-transparent opacity-60"></div>
+      <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-orange-500 to-transparent opacity-60"></div>
+      <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-transparent via-orange-500 to-transparent opacity-60"></div>
+      <div class="absolute top-0 right-0 w-1 h-full bg-gradient-to-b from-transparent via-orange-500 to-transparent opacity-60"></div>
+      
+      <!-- Floating Gaming Elements -->
+      <div class="absolute top-20 left-10 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
+      <div class="absolute bottom-20 right-10 w-40 h-40 bg-orange-600/10 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 1s;"></div>
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-orange-400/5 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 2s;"></div>
+      
+      <!-- Circuit Board Lines -->
+      <div class="absolute top-1/4 left-0 w-32 h-0.5 bg-gradient-to-r from-orange-500 to-transparent"></div>
+      <div class="absolute top-1/4 right-0 w-32 h-0.5 bg-gradient-to-l from-orange-500 to-transparent"></div>
+      <div class="absolute bottom-1/4 left-0 w-32 h-0.5 bg-gradient-to-r from-orange-500 to-transparent"></div>
+      <div class="absolute bottom-1/4 right-0 w-32 h-0.5 bg-gradient-to-l from-orange-500 to-transparent"></div>
     </div>
     
     <!-- Content -->
@@ -65,9 +77,10 @@ onMounted(() => {
 <style>
 /* Global styles */
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Orbitron', 'Rajdhani', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
+  background: #000;
 }
 
 /* Smooth scrolling */
@@ -81,16 +94,16 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(14, 165, 233, 0.1);
+  background: rgba(255, 107, 53, 0.1);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+  background: linear-gradient(135deg, #ff6b35, #ff8c42);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #0284c7, #2563eb);
+  background: linear-gradient(135deg, #ff5722, #ff7043);
 }
 
 /* Custom animations */
@@ -100,13 +113,23 @@ html {
 }
 
 @keyframes pulse-slow {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.6; }
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.3; }
 }
 
 @keyframes glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(14, 165, 233, 0.3); }
-  50% { box-shadow: 0 0 30px rgba(14, 165, 233, 0.6); }
+  0%, 100% { box-shadow: 0 0 20px rgba(255, 107, 53, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(255, 107, 53, 0.6); }
+}
+
+@keyframes neon-pulse {
+  0%, 100% { text-shadow: 0 0 5px #ff6b35, 0 0 10px #ff6b35, 0 0 15px #ff6b35; }
+  50% { text-shadow: 0 0 10px #ff6b35, 0 0 20px #ff6b35, 0 0 30px #ff6b35; }
+}
+
+@keyframes scan-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
 }
 
 .animate-float {
@@ -121,44 +144,8 @@ html {
   animation: glow 2s ease-in-out infinite;
 }
 
-/* Custom utility classes */
-.card-glass {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(186, 230, 253, 0.5);
-  border-radius: 1rem;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, #0ea5e9, #2563eb);
-  color: white;
-  font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.75rem;
-  transition: all 0.3s;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
-
-.btn-primary:hover {
-  box-shadow: 0 10px 15px -3px rgba(14, 165, 233, 0.25), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  transform: translateY(-2px) scale(1.05);
-}
-
-.btn-outline {
-  border: 2px solid rgba(14, 165, 233, 0.5);
-  color: #0ea5e9;
-  font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.75rem;
-  transition: all 0.3s;
-}
-
-.btn-outline:hover {
-  background: #0ea5e9;
-  color: white;
-  border-color: #0ea5e9;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+.animate-neon {
+  animation: neon-pulse 2s ease-in-out infinite;
 }
 
 /* Utility classes */
@@ -173,7 +160,7 @@ html {
 }
 
 .text-gradient-primary {
-  background: linear-gradient(135deg, #0ea5e9, #2563eb);
+  background: linear-gradient(135deg, #ff6b35, #ff8c42);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -181,25 +168,61 @@ html {
 
 /* Gaming-specific styles */
 .gaming-card {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(20, 20, 20, 0.9);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(186, 230, 253, 0.5);
-  border-radius: 1rem;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border: 2px solid rgba(255, 107, 53, 0.3);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 20px rgba(255, 107, 53, 0.1), inset 0 0 20px rgba(255, 107, 53, 0.05);
   transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.gaming-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.gaming-card:hover::before {
+  left: 100%;
 }
 
 .gaming-card:hover {
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  transform: scale(1.05);
+  border-color: rgba(255, 107, 53, 0.8);
+  box-shadow: 0 0 30px rgba(255, 107, 53, 0.3), inset 0 0 30px rgba(255, 107, 53, 0.1);
+  transform: translateY(-5px);
 }
 
 .gaming-border {
-  border: 2px solid rgba(186, 230, 253, 0.5);
+  border: 2px solid rgba(255, 107, 53, 0.5);
 }
 
 .gaming-accent {
-  background: linear-gradient(135deg, #38bdf8, #3b82f6);
+  background: linear-gradient(135deg, #ff6b35, #ff8c42);
+}
+
+/* Neon text effect */
+.neon-text {
+  color: #ff6b35;
+  text-shadow: 0 0 5px #ff6b35, 0 0 10px #ff6b35, 0 0 15px #ff6b35;
+}
+
+/* Scan line effect */
+.scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff6b35, transparent);
+  animation: scan-line 3s linear infinite;
+  opacity: 0.6;
 }
 
 /* Responsive design */
