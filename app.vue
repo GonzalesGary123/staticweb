@@ -1,11 +1,16 @@
 <template>
-  <div class="min-h-screen transition-colors duration-300 dark:bg-gradient-to-br dark:from-dark-50 dark:via-dark-100 dark:to-dark-200 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100 dark:text-white text-gray-900">
-    <!-- Simple Gaming Background -->
+  <div class="min-h-screen transition-colors duration-300 bg-gradient-to-br from-sky-50 via-white to-sky-100 text-gray-900">
+    <!-- Gaming Background Elements -->
     <div class="fixed inset-0 overflow-hidden pointer-events-none">
-      <!-- Simple Neon Accents -->
-      <div class="absolute -top-40 -right-40 w-60 h-60 bg-primary-500/10 rounded-full blur-2xl"></div>
-      <div class="absolute -bottom-40 -left-40 w-60 h-60 bg-secondary-500/10 rounded-full blur-2xl"></div>
-      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-accent-500/5 rounded-full blur-2xl"></div>
+      <!-- Geometric Gaming Patterns -->
+      <div class="absolute top-20 left-10 w-72 h-72 bg-sky-400/20 rounded-full blur-3xl animate-pulse-slow"></div>
+      <div class="absolute bottom-20 right-10 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 1s;"></div>
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-sky-300/15 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 2s;"></div>
+      
+      <!-- Gaming Grid Pattern -->
+      <div class="absolute inset-0 opacity-30">
+        <div class="w-full h-full" style="background-image: radial-gradient(circle at 1px 1px, #e0f2fe 1px, transparent 0); background-size: 60px 60px;"></div>
+      </div>
     </div>
     
     <!-- Content -->
@@ -76,16 +81,16 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.1);
+  background: rgba(14, 165, 233, 0.1);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #0ea5e9, #8b5cf6);
+  background: linear-gradient(135deg, #0ea5e9, #3b82f6);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #0284c7, #7c3aed);
+  background: linear-gradient(135deg, #0284c7, #2563eb);
 }
 
 /* Custom animations */
@@ -95,8 +100,13 @@ html {
 }
 
 @keyframes pulse-slow {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(14, 165, 233, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(14, 165, 233, 0.6); }
 }
 
 .animate-float {
@@ -107,44 +117,99 @@ html {
   animation: pulse-slow 3s ease-in-out infinite;
 }
 
-/* Utility classes */
-.section-padding {
-  @apply py-20 px-4;
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
 }
 
-.container-custom {
-  @apply max-w-7xl mx-auto px-4;
-}
-
-.text-gradient-primary {
-  @apply bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent;
-}
-
+/* Custom utility classes */
 .card-glass {
-  @apply bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(186, 230, 253, 0.5);
+  border-radius: 1rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 .btn-primary {
-  @apply bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/25 transform hover:-translate-y-1;
+  background: linear-gradient(135deg, #0ea5e9, #2563eb);
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  transition: all 0.3s;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 10px 15px -3px rgba(14, 165, 233, 0.25), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px) scale(1.05);
 }
 
 .btn-outline {
-  @apply border-2 border-white/20 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:bg-white/10 hover:border-white/40;
+  border: 2px solid rgba(14, 165, 233, 0.5);
+  color: #0ea5e9;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  transition: all 0.3s;
 }
 
-/* Dark mode overrides */
-.dark .card-glass {
-  @apply bg-dark-800/50 border-dark-700/50;
+.btn-outline:hover {
+  background: #0ea5e9;
+  color: white;
+  border-color: #0ea5e9;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Utility classes */
+.section-padding {
+  padding: 5rem 1rem;
+}
+
+.container-custom {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.text-gradient-primary {
+  background: linear-gradient(135deg, #0ea5e9, #2563eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gaming-specific styles */
+.gaming-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(186, 230, 253, 0.5);
+  border-radius: 1rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s;
+}
+
+.gaming-card:hover {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  transform: scale(1.05);
+}
+
+.gaming-border {
+  border: 2px solid rgba(186, 230, 253, 0.5);
+}
+
+.gaming-accent {
+  background: linear-gradient(135deg, #38bdf8, #3b82f6);
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
   .section-padding {
-    @apply py-16 px-4;
+    padding: 4rem 1rem;
   }
   
   .container-custom {
-    @apply px-4;
+    padding: 0 1rem;
   }
 }
 
