@@ -1,5 +1,5 @@
 import process from 'node:process';globalThis._importMeta_={url:import.meta.url,env:process.env};import { tmpdir } from 'node:os';
-import { defineEventHandler, handleCacheHeaders, splitCookiesString, createEvent, fetchWithEvent, isEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHeader, setResponseHeaders, setResponseStatus, send, getRequestHeaders, setResponseHeader, appendResponseHeader, getRequestURL, getResponseHeader, removeResponseHeader, createError, getQuery as getQuery$1, readBody, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getResponseStatus, getRouterParam, getResponseStatusText } from 'file:///workspace/node_modules/h3/dist/index.mjs';
+import { defineEventHandler, handleCacheHeaders, splitCookiesString, createEvent, fetchWithEvent, isEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHeader, setResponseHeaders, setResponseStatus, send, getRequestHeaders, setResponseHeader, appendResponseHeader, getRequestURL, getResponseHeader, removeResponseHeader, createError, getQuery as getQuery$1, readBody, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getResponseStatus, getRouterParam, setHeader, getResponseStatusText } from 'file:///workspace/node_modules/h3/dist/index.mjs';
 import { Server } from 'node:http';
 import { resolve, dirname, join } from 'node:path';
 import nodeCrypto from 'node:crypto';
@@ -1523,10 +1523,18 @@ async function getIslandContext(event) {
   return ctx;
 }
 
+const _lazy_CKaeti = () => Promise.resolve().then(function () { return _id__get$1; });
+const _lazy_yvBDhN = () => Promise.resolve().then(function () { return global_get$1; });
+const _lazy_keHewO = () => Promise.resolve().then(function () { return markets_get$1; });
+const _lazy_Hw3S07 = () => Promise.resolve().then(function () { return trending_get$1; });
 const _lazy_MqQDbq = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
   { route: '', handler: _wKQydp, lazy: false, middleware: true, method: undefined },
+  { route: '/api/crypto/coin/:id', handler: _lazy_CKaeti, lazy: true, middleware: false, method: "get" },
+  { route: '/api/crypto/global', handler: _lazy_yvBDhN, lazy: true, middleware: false, method: "get" },
+  { route: '/api/crypto/markets', handler: _lazy_keHewO, lazy: true, middleware: false, method: "get" },
+  { route: '/api/crypto/trending', handler: _lazy_Hw3S07, lazy: true, middleware: false, method: "get" },
   { route: '/__nuxt_error', handler: _lazy_MqQDbq, lazy: true, middleware: false, method: undefined },
   { route: '/__nuxt_island/**', handler: _SxA8c9, lazy: false, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_MqQDbq, lazy: true, middleware: false, method: undefined }
@@ -1855,6 +1863,238 @@ const styles = {};
 const styles$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
   default: styles
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const _id__get = defineEventHandler(async (event) => {
+  try {
+    const id2 = event.context.params.id;
+    const query = getQuery$1(event);
+    const { localization = "false", tickers = "false", market_data = "true", community_data = "false", developer_data = "false", sparkline = "false" } = query;
+    const url = `https://api.coingecko.com/api/v3/coins/${id2}?localization=${localization}&tickers=${tickers}&market_data=${market_data}&community_data=${community_data}&developer_data=${developer_data}&sparkline=${sparkline}`;
+    const response = await fetch(url, {
+      headers: {
+        "Accept": "application/json",
+        "User-Agent": "CryptoGroup-App/1.0"
+      }
+    });
+    if (!response.ok) {
+      throw createError({
+        statusCode: response.status,
+        statusMessage: `CoinGecko API error: ${response.status}`
+      });
+    }
+    const data = await response.json();
+    setHeader(event, "Cache-Control", "public, max-age=60");
+    return data;
+  } catch (error) {
+    console.error("Error in crypto coin API:", error);
+    return {
+      id: id || "bitcoin",
+      symbol: "btc",
+      name: "Bitcoin",
+      description: {
+        en: "Bitcoin is a decentralized cryptocurrency originally described in a 2008 whitepaper by a person, or group of people, using the alias Satoshi Nakamoto."
+      },
+      market_data: {
+        current_price: { usd: 43250 },
+        price_change_24h: { usd: 1250 },
+        price_change_percentage_24h: { usd: 2.98 },
+        market_cap: { usd: 85e10 },
+        total_volume: { usd: 25e9 },
+        high_24h: { usd: 44500 },
+        low_24h: { usd: 42e3 },
+        circulating_supply: 196e5,
+        total_supply: 21e6,
+        max_supply: 21e6,
+        ath: { usd: 69e3 },
+        ath_date: { usd: "2021-11-10T14:24:11.849Z" },
+        atl: { usd: 67.81 },
+        atl_date: { usd: "2013-07-06T00:00:00.000Z" }
+      },
+      market_cap_rank: 1,
+      last_updated: (/* @__PURE__ */ new Date()).toISOString(),
+      image: { large: "https://assets.coingecko.com/coins/images/1/large/bitcoin.png" },
+      genesis_date: "2009-01-03",
+      categories: ["Cryptocurrency"],
+      links: {}
+    };
+  }
+});
+
+const _id__get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: _id__get
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const global_get = defineEventHandler(async (event) => {
+  try {
+    const response = await fetch("https://api.coingecko.com/api/v3/global", {
+      headers: {
+        "Accept": "application/json",
+        "User-Agent": "CryptoGroup-App/1.0"
+      }
+    });
+    if (!response.ok) {
+      throw createError({
+        statusCode: response.status,
+        statusMessage: `CoinGecko API error: ${response.status}`
+      });
+    }
+    const data = await response.json();
+    setHeader(event, "Cache-Control", "public, max-age=300");
+    return data;
+  } catch (error) {
+    console.error("Error in crypto global API:", error);
+    return {
+      data: {
+        active_cryptocurrencies: 2500,
+        total_market_cap: { usd: 15e11 },
+        total_volume: { usd: 5e10 },
+        market_cap_percentage: { btc: 45.2, eth: 18.5 },
+        market_cap_change_percentage_24h_usd: 2.5,
+        updated_at: Math.floor(Date.now() / 1e3)
+      }
+    };
+  }
+});
+
+const global_get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: global_get
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const markets_get = defineEventHandler(async (event) => {
+  try {
+    const query = getQuery$1(event);
+    const { ids, vs_currency = "usd", order = "market_cap_desc", per_page = "100", page = "1", sparkline = "false", price_change_percentage = "1h,24h,7d" } = query;
+    const coinIds = Array.isArray(ids) ? ids.join(",") : ids;
+    const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${vs_currency}&ids=${coinIds}&order=${order}&per_page=${per_page}&page=${page}&sparkline=${sparkline}&price_change_percentage=${price_change_percentage}`;
+    const response = await fetch(url, {
+      headers: {
+        "Accept": "application/json",
+        "User-Agent": "CryptoGroup-App/1.0"
+      }
+    });
+    if (!response.ok) {
+      throw createError({
+        statusCode: response.status,
+        statusMessage: `CoinGecko API error: ${response.status}`
+      });
+    }
+    const data = await response.json();
+    setHeader(event, "Cache-Control", "public, max-age=30");
+    return data;
+  } catch (error) {
+    console.error("Error in crypto markets API:", error);
+    return [
+      {
+        id: "bitcoin",
+        symbol: "btc",
+        name: "Bitcoin",
+        current_price: 43250,
+        price_change_24h: 1250,
+        price_change_percentage_24h: 2.98,
+        price_change_percentage_1h: 0.5,
+        price_change_percentage_7d: 8.5,
+        market_cap: 85e10,
+        market_cap_rank: 1,
+        total_volume: 25e9,
+        high_24h: 44500,
+        low_24h: 42e3,
+        circulating_supply: 196e5,
+        total_supply: 21e6,
+        max_supply: 21e6,
+        last_updated: (/* @__PURE__ */ new Date()).toISOString(),
+        image: "https://assets.coingecko.com/coins/images/1/large/bitcoin.png"
+      },
+      {
+        id: "ethereum",
+        symbol: "eth",
+        name: "Ethereum",
+        current_price: 2680,
+        price_change_24h: -32,
+        price_change_percentage_24h: -1.18,
+        price_change_percentage_1h: -0.2,
+        price_change_percentage_7d: 5.2,
+        market_cap: 32e10,
+        market_cap_rank: 2,
+        total_volume: 15e9,
+        high_24h: 2750,
+        low_24h: 2650,
+        circulating_supply: 12e7,
+        total_supply: 12e7,
+        max_supply: null,
+        last_updated: (/* @__PURE__ */ new Date()).toISOString(),
+        image: "https://assets.coingecko.com/coins/images/279/large/ethereum.png"
+      }
+    ];
+  }
+});
+
+const markets_get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: markets_get
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const trending_get = defineEventHandler(async (event) => {
+  try {
+    const response = await fetch("https://api.coingecko.com/api/v3/search/trending", {
+      headers: {
+        "Accept": "application/json",
+        "User-Agent": "CryptoGroup-App/1.0"
+      }
+    });
+    if (!response.ok) {
+      throw createError({
+        statusCode: response.status,
+        statusMessage: `CoinGecko API error: ${response.status}`
+      });
+    }
+    const data = await response.json();
+    setHeader(event, "Cache-Control", "public, max-age=300");
+    return data;
+  } catch (error) {
+    console.error("Error in crypto trending API:", error);
+    return {
+      coins: [
+        {
+          item: {
+            id: "bitcoin",
+            coin_id: 1,
+            name: "Bitcoin",
+            symbol: "BTC",
+            market_cap_rank: 1,
+            thumb: "https://assets.coingecko.com/coins/images/1/small/bitcoin.png",
+            small: "https://assets.coingecko.com/coins/images/1/small/bitcoin.png",
+            large: "https://assets.coingecko.com/coins/images/1/large/bitcoin.png",
+            slug: "bitcoin",
+            price_btc: 1,
+            score: 0
+          }
+        },
+        {
+          item: {
+            id: "ethereum",
+            coin_id: 279,
+            name: "Ethereum",
+            symbol: "ETH",
+            market_cap_rank: 2,
+            thumb: "https://assets.coingecko.com/coins/images/279/small/ethereum.png",
+            small: "https://assets.coingecko.com/coins/images/279/small/ethereum.png",
+            large: "https://assets.coingecko.com/coins/images/279/large/ethereum.png",
+            slug: "ethereum",
+            price_btc: 0.062,
+            score: 1
+          }
+        }
+      ]
+    };
+  }
+});
+
+const trending_get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: trending_get
 }, Symbol.toStringTag, { value: 'Module' }));
 
 function renderPayloadResponse(ssrContext) {
