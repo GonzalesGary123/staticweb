@@ -29,7 +29,7 @@
         <!-- CTA Buttons -->
         <div class="hidden lg:flex items-center space-x-4">
           <!-- Theme Toggle -->
-          <button 
+          <!--<button 
             @click="toggleTheme" 
             class="p-2 rounded-lg bg-orange-500/20 hover:bg-orange-500/30 transition-colors duration-200 text-orange-400 border border-orange-500/30"
             :title="isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'"
@@ -44,7 +44,7 @@
           
           <button class="px-4 py-2 text-orange-400 hover:text-orange-300 transition-colors duration-200 font-medium border border-orange-500/30 rounded-lg hover:bg-orange-500/10">
             LOGIN
-          </button>
+          </button>-->
           <a href="#membership" class="btn-primary text-sm">
             JOIN ARENA
           </a>
