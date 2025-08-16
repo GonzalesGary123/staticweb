@@ -1,5 +1,5 @@
-// Crypto API service using CoinGecko API
-const COINGECKO_API_BASE = 'https://api.coingecko.com/api/v3'
+// Crypto API service using local proxy endpoints
+const API_BASE = '/api/crypto'
 
 export class CryptoApiService {
   constructor() {
@@ -15,7 +15,7 @@ export class CryptoApiService {
       if (cached) return cached
 
       const response = await fetch(
-        `${COINGECKO_API_BASE}/coins/markets?vs_currency=usd&ids=${ids.join(',')}&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h,24h,7d`
+        `${API_BASE}/markets?ids=${ids.join(',')}&vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=1h,24h,7d`
       )
 
       if (!response.ok) {
@@ -61,7 +61,7 @@ export class CryptoApiService {
       if (cached) return cached
 
       const response = await fetch(
-        `${COINGECKO_API_BASE}/coins/${id}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false`
+        `${API_BASE}/coin/${id}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false`
       )
 
       if (!response.ok) {
@@ -111,7 +111,7 @@ export class CryptoApiService {
       const cached = this.getCachedData(cacheKey)
       if (cached) return cached
 
-      const response = await fetch(`${COINGECKO_API_BASE}/search/trending`)
+      const response = await fetch(`${API_BASE}/trending`)
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
@@ -143,7 +143,7 @@ export class CryptoApiService {
       const cached = this.getCachedData(cacheKey)
       if (cached) return cached
 
-      const response = await fetch(`${COINGECKO_API_BASE}/global`)
+      const response = await fetch(`${API_BASE}/global`)
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
