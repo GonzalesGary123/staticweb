@@ -71,6 +71,23 @@ onMounted(() => {
   if (window.innerWidth < 768) {
     document.documentElement.classList.add('reduce-blur')
   }
+  
+  // Smooth scrolling fallback for browsers that don't support CSS scroll-behavior
+  if (!CSS.supports('scroll-behavior', 'smooth')) {
+    // Add smooth scrolling to all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault()
+        const target = document.querySelector(this.getAttribute('href'))
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          })
+        }
+      })
+    })
+  }
 })
 </script>
 
@@ -86,6 +103,18 @@ body {
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* iOS smooth scrolling */
+}
+
+/* Enhanced smooth scrolling for all scrollable elements */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Smooth scrolling for specific elements */
+.smooth-scroll {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Custom scrollbar */
