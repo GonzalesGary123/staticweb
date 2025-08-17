@@ -29,13 +29,7 @@
     <div class="relative z-10">
       <CryptoHeader />
       <main>
-        <CryptoHero />
-        <CryptoAbout />
-        <CryptoFeatures />
-        <CryptoMembership />
-        <CryptoTestimonials />
-        <LiveMarketData />
-        <CryptoDemo />
+        <NuxtPage />
       </main>
       <CryptoFooter />
     </div>
