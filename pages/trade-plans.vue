@@ -226,14 +226,14 @@
                     <div class="flex gap-2">
                       <button 
                         v-if="trade.result === 'pending'"
-                        @click="updateTradeResult(plan.id, trade.id, 'win', prompt('Enter exit price:') || trade.entryPrice)"
+                        @click="openUpdateTradeModal(plan.id, trade.id, 'win')"
                         class="gaming-border px-3 py-1 rounded text-xs hover:scale-105 transition-transform text-green-400"
                       >
                         ✅ Win
                       </button>
                       <button 
                         v-if="trade.result === 'pending'"
-                        @click="updateTradeResult(plan.id, trade.id, 'loss', prompt('Enter exit price:') || trade.entryPrice)"
+                        @click="openUpdateTradeModal(plan.id, trade.id, 'loss')"
                         class="gaming-border px-3 py-1 rounded text-xs hover:scale-105 transition-transform text-red-400"
                       >
                         ❌ Loss
@@ -262,12 +262,12 @@
       </div>
     </div>
 
-    <!-- Create Plan Modal -->
+    <!-- Create/Edit Plan Modal -->
     <div v-if="showCreatePlanModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
       <div class="gaming-card p-8 max-w-md w-full">
-        <h3 class="text-2xl font-bold mb-6 text-gradient-primary">Create New Trade Plan</h3>
+        <h3 class="text-2xl font-bold mb-6 text-gradient-primary">{{ selectedPlanId ? 'Edit Trade Plan' : 'Create New Trade Plan' }}</h3>
         <div class="space-y-4">
-          <div>
+          <div v-if="!selectedPlanId">
             <label class="block text-sm font-medium mb-2">Date</label>
             <input 
               v-model="newPlanDate" 
@@ -286,13 +286,13 @@
           </div>
           <div class="flex gap-4">
             <button 
-              @click="createNewPlan"
+              @click="selectedPlanId ? updatePlanNotes() : createNewPlan()"
               class="flex-1 gaming-accent py-3 rounded font-semibold"
             >
-              Create Plan
+              {{ selectedPlanId ? 'Update Plan' : 'Create Plan' }}
             </button>
             <button 
-              @click="showCreatePlanModal = false"
+              @click="closePlanModal"
               class="flex-1 gaming-border py-3 rounded font-semibold"
             >
               Cancel
@@ -409,6 +409,48 @@
       </div>
     </div>
 
+    <!-- Update Trade Result Modal -->
+    <div v-if="showUpdateTradeModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
+      <div class="gaming-card p-8 max-w-md w-full">
+        <h3 class="text-2xl font-bold mb-6 text-gradient-primary">Update Trade Result</h3>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium mb-2">Exit Price</label>
+            <input 
+              v-model="updateTradeData.exitPrice" 
+              type="number" 
+              step="0.01"
+              class="w-full gaming-border p-3 rounded bg-black text-white"
+              placeholder="Enter exit price..."
+            >
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-2">Notes (Optional)</label>
+            <textarea 
+              v-model="updateTradeData.notes" 
+              rows="2"
+              class="w-full gaming-border p-3 rounded bg-black text-white"
+              placeholder="Add any additional notes..."
+            ></textarea>
+          </div>
+          <div class="flex gap-4">
+            <button 
+              @click="confirmUpdateTradeResult"
+              class="flex-1 gaming-accent py-3 rounded font-semibold"
+            >
+              Update Result
+            </button>
+            <button 
+              @click="showUpdateTradeModal = false"
+              class="flex-1 gaming-border py-3 rounded font-semibold"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Back to Home Button -->
     <div class="fixed bottom-6 right-6 z-40">
       <NuxtLink 
@@ -456,6 +498,7 @@ const {
 const showCreatePlanModal = ref(false)
 const showAddTradeModal = ref(false)
 const showImportModal = ref(false)
+const showUpdateTradeModal = ref(false)
 const newPlanDate = ref(new Date().toISOString().split('T')[0])
 const newPlanNotes = ref('')
 const selectedPlanId = ref('')
@@ -464,6 +507,13 @@ const newTrade = ref({
   symbol: '',
   entryPrice: '',
   quantity: '',
+  notes: ''
+})
+const updateTradeData = ref({
+  planId: '',
+  tradeId: '',
+  result: '',
+  exitPrice: '',
   notes: ''
 })
 
@@ -506,6 +556,25 @@ const createNewPlan = () => {
   }
 }
 
+const updatePlanNotes = () => {
+  if (selectedPlanId.value && newPlanNotes.value.trim()) {
+    const plan = tradePlans.value.find(p => p.id === selectedPlanId.value)
+    if (plan) {
+      plan.notes = newPlanNotes.value.trim()
+      plan.updatedAt = new Date().toISOString()
+      saveToStorage()
+    }
+    closePlanModal()
+  }
+}
+
+const closePlanModal = () => {
+  showCreatePlanModal.value = false
+  selectedPlanId.value = ''
+  newPlanNotes.value = ''
+  newPlanDate.value = new Date().toISOString().split('T')[0]
+}
+
 const addNewTrade = () => {
   if (selectedPlanId.value && newTrade.value.symbol && newTrade.value.entryPrice && newTrade.value.quantity) {
     addTrade(selectedPlanId.value, {
@@ -528,11 +597,46 @@ const addTradeToPlan = (plan) => {
 }
 
 const editPlan = (plan) => {
-  // For now, just allow editing notes via a simple prompt
-  const newNotes = prompt('Edit plan notes:', plan.notes || '')
-  if (newNotes !== null) {
-    plan.notes = newNotes
-    plan.updatedAt = new Date().toISOString()
+  // Show edit plan modal
+  newPlanNotes.value = plan.notes || ''
+  selectedPlanId.value = plan.id
+  showCreatePlanModal.value = true
+}
+
+const openUpdateTradeModal = (planId, tradeId, result) => {
+  updateTradeData.value = {
+    planId,
+    tradeId,
+    result,
+    exitPrice: '',
+    notes: ''
+  }
+  showUpdateTradeModal.value = true
+}
+
+const confirmUpdateTradeResult = () => {
+  if (updateTradeData.value.exitPrice) {
+    updateTradeResult(
+      updateTradeData.value.planId, 
+      updateTradeData.value.tradeId, 
+      updateTradeData.value.result, 
+      updateTradeData.value.exitPrice,
+      new Date().toISOString()
+    )
+    
+    // Update trade notes if provided
+    if (updateTradeData.value.notes) {
+      const plan = tradePlans.value.find(p => p.id === updateTradeData.value.planId)
+      if (plan) {
+        const trade = plan.trades.find(t => t.id === updateTradeData.value.tradeId)
+        if (trade) {
+          trade.notes = updateTradeData.value.notes
+        }
+      }
+    }
+    
+    showUpdateTradeModal.value = false
+    updateTradeData.value = { planId: '', tradeId: '', result: '', exitPrice: '', notes: '' }
   }
 }
 
@@ -549,9 +653,9 @@ const handleImportTradeData = () => {
   }
 }
 
-// Initialize sample data on mount
+// Initialize data from localStorage on mount
 onMounted(() => {
-  initializeSampleData()
+  initializeData()
 })
 </script>
 
