@@ -24,6 +24,7 @@
           <a href="#membership" class="nav-link text-sm font-medium">MEMBERSHIP</a>
           <a href="#testimonials" class="nav-link text-sm font-medium">LEADERBOARD</a>
           <a href="#market" class="nav-link text-sm font-medium">MARKET</a>
+          <NuxtLink to="/trade-plans" class="nav-link text-sm font-medium">TRADE PLANS</NuxtLink>
         </div>
 
         <!-- CTA Buttons -->
@@ -74,6 +75,7 @@
           <a href="#membership" class="nav-link text-base font-medium py-2">MEMBERSHIP</a>
           <a href="#testimonials" class="nav-link text-base font-medium py-2">LEADERBOARD</a>
           <a href="#market" class="nav-link text-base font-medium py-2">MARKET</a>
+          <NuxtLink to="/trade-plans" class="nav-link text-base font-medium py-2">TRADE PLANS</NuxtLink>
           
           <div class="pt-4 border-t border-orange-500/30">
             <!-- Mobile Theme Toggle -->
