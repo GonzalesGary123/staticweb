@@ -491,7 +491,8 @@ const {
   deleteTradePlan,
   exportTradeData,
   importTradeData,
-  initializeSampleData
+  initializeData,
+  saveToStorage
 } = useTradePlans()
 
 // Local state
