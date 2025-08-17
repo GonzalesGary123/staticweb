@@ -6,7 +6,7 @@
     <div class="container-custom">
       <nav class="flex items-center justify-between py-4">
         <!-- Logo/Brand -->
-        <div class="flex items-center space-x-3">
+        <NuxtLink to="/" class="flex items-center space-x-3 hover:scale-105 transition-transform duration-200">
           <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center shadow-lg animate-glow border border-orange-400/50">
             <span class="text-2xl">🎮</span>
           </div>
@@ -14,16 +14,16 @@
             <h1 class="text-xl font-bold text-white font-orbitron">CryptoGaming</h1>
             <p class="text-xs text-orange-400 font-medium tracking-wider">ULTIMATE CRYPTO ARENA</p>
           </div>
-        </div>
+        </NuxtLink>
 
         <!-- Desktop Navigation -->
         <div class="hidden lg:flex items-center space-x-8">
-          <a href="#home" class="nav-link text-sm font-medium">HOME</a>
-          <a href="#about" class="nav-link text-sm font-medium">ABOUT</a>
-          <a href="#features" class="nav-link text-sm font-medium">FEATURES</a>
-          <a href="#membership" class="nav-link text-sm font-medium">MEMBERSHIP</a>
-          <a href="#testimonials" class="nav-link text-sm font-medium">LEADERBOARD</a>
-          <a href="#market" class="nav-link text-sm font-medium">MARKET</a>
+          <NuxtLink to="/" class="nav-link text-sm font-medium">HOME</NuxtLink>
+          <NuxtLink to="/#about" class="nav-link text-sm font-medium">ABOUT</NuxtLink>
+          <NuxtLink to="/#features" class="nav-link text-sm font-medium">FEATURES</NuxtLink>
+          <NuxtLink to="/#membership" class="nav-link text-sm font-medium">MEMBERSHIP</NuxtLink>
+          <NuxtLink to="/#testimonials" class="nav-link text-sm font-medium">LEADERBOARD</NuxtLink>
+          <NuxtLink to="/#market" class="nav-link text-sm font-medium">MARKET</NuxtLink>
           <NuxtLink to="/trade-plans" class="nav-link text-sm font-medium">TRADE PLANS</NuxtLink>
         </div>
 
@@ -69,12 +69,12 @@
         class="lg:hidden py-4 border-t border-orange-500/30 animate-fade-in-down bg-black/95 backdrop-blur-sm rounded-b-lg shadow-2xl"
       >
         <div class="flex flex-col space-y-4">
-          <a href="#home" class="nav-link text-base font-medium py-2">HOME</a>
-          <a href="#about" class="nav-link text-base font-medium py-2">ABOUT</a>
-          <a href="#features" class="nav-link text-base font-medium py-2">FEATURES</a>
-          <a href="#membership" class="nav-link text-base font-medium py-2">MEMBERSHIP</a>
-          <a href="#testimonials" class="nav-link text-base font-medium py-2">LEADERBOARD</a>
-          <a href="#market" class="nav-link text-base font-medium py-2">MARKET</a>
+          <NuxtLink to="/" class="nav-link text-base font-medium py-2">HOME</NuxtLink>
+          <NuxtLink to="/#about" class="nav-link text-base font-medium py-2">ABOUT</NuxtLink>
+          <NuxtLink to="/#features" class="nav-link text-base font-medium py-2">FEATURES</NuxtLink>
+          <NuxtLink to="/#membership" class="nav-link text-base font-medium py-2">MEMBERSHIP</NuxtLink>
+          <NuxtLink to="/#testimonials" class="nav-link text-base font-medium py-2">LEADERBOARD</NuxtLink>
+          <NuxtLink to="/#market" class="nav-link text-base font-medium py-2">MARKET</NuxtLink>
           <NuxtLink to="/trade-plans" class="nav-link text-base font-medium py-2">TRADE PLANS</NuxtLink>
           
           <div class="pt-4 border-t border-orange-500/30">
