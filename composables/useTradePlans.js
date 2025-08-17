@@ -110,6 +110,7 @@ export function useTradePlans() {
     
     tradePlans.value.push(newPlan)
     currentPlan.value = newPlan
+    saveToStorage()
     return newPlan
   }
 
@@ -132,6 +133,7 @@ export function useTradePlans() {
     
     plan.trades.push(newTrade)
     plan.updatedAt = new Date().toISOString()
+    saveToStorage()
     
     return newTrade
   }
@@ -147,6 +149,7 @@ export function useTradePlans() {
     if (exitPrice) trade.exitPrice = parseFloat(exitPrice)
     if (exitTime) trade.exitTime = exitTime
     plan.updatedAt = new Date().toISOString()
+    saveToStorage()
     
     return true
   }
@@ -157,6 +160,7 @@ export function useTradePlans() {
     
     plan.trades = plan.trades.filter(t => t.id !== tradeId)
     plan.updatedAt = new Date().toISOString()
+    saveToStorage()
     
     return true
   }
@@ -170,6 +174,7 @@ export function useTradePlans() {
     if (currentPlan.value && currentPlan.value.id === planId) {
       currentPlan.value = null
     }
+    saveToStorage()
     
     return true
   }
@@ -209,6 +214,7 @@ export function useTradePlans() {
       const data = JSON.parse(jsonData)
       if (data.plans && Array.isArray(data.plans)) {
         tradePlans.value = data.plans
+        saveToStorage()
         return true
       }
       return false
@@ -218,52 +224,37 @@ export function useTradePlans() {
     }
   }
 
-  // Initialize with some sample data for demonstration
-  const initializeSampleData = () => {
-    if (tradePlans.value.length === 0) {
-      const today = new Date().toISOString().split('T')[0]
-      const yesterday = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString().split('T')[0]
-      
-      // Today's plan
-      const todayPlan = createTradePlan(today, 'Focus on BTC and ETH momentum trades')
-      addTrade(todayPlan.id, {
-        symbol: 'BTC/USDT',
-        entryPrice: 45000,
-        exitPrice: 46500,
-        quantity: 0.1,
-        result: 'win',
-        notes: 'Breakout trade from key resistance'
-      })
-      addTrade(todayPlan.id, {
-        symbol: 'ETH/USDT',
-        entryPrice: 3200,
-        exitPrice: 3150,
-        quantity: 1.5,
-        result: 'loss',
-        notes: 'Failed support test'
-      })
-      
-      // Yesterday's plan
-      const yesterdayPlan = createTradePlan(yesterday, 'Scalping opportunities in altcoins')
-      addTrade(yesterdayPlan.id, {
-        symbol: 'SOL/USDT',
-        entryPrice: 95,
-        exitPrice: 98,
-        quantity: 10,
-        result: 'win',
-        notes: 'Quick scalp on volume spike'
-      })
-      addTrade(yesterdayPlan.id, {
-        symbol: 'ADA/USDT',
-        entryPrice: 0.45,
-        exitPrice: 0.47,
-        quantity: 1000,
-        result: 'win',
-        notes: 'Trend following trade'
-      })
-      
-      currentPlan.value = todayPlan
+  // Load data from localStorage
+  const loadFromStorage = () => {
+    try {
+      const stored = localStorage.getItem('tradePlans')
+      if (stored) {
+        const data = JSON.parse(stored)
+        tradePlans.value = data.plans || []
+        currentPlan.value = data.currentPlan || null
+      }
+    } catch (error) {
+      console.error('Error loading trade plans from localStorage:', error)
     }
+  }
+
+  // Save data to localStorage
+  const saveToStorage = () => {
+    try {
+      const data = {
+        plans: tradePlans.value,
+        currentPlan: currentPlan.value,
+        lastUpdated: new Date().toISOString()
+      }
+      localStorage.setItem('tradePlans', JSON.stringify(data))
+    } catch (error) {
+      console.error('Error saving trade plans to localStorage:', error)
+    }
+  }
+
+  // Initialize with data from localStorage
+  const initializeData = () => {
+    loadFromStorage()
   }
 
   return {
@@ -291,6 +282,7 @@ export function useTradePlans() {
     getTradePlansByDate,
     exportTradeData,
     importTradeData,
-    initializeSampleData
+    initializeData,
+    saveToStorage
   }
 }
