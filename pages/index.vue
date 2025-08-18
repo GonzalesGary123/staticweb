@@ -19,6 +19,7 @@
       <CryptoHeader />
       <main>
         <CryptoHero />
+        <MarketStatus />
         <CryptoAbout />
         <CryptoFeatures />
         <CryptoMembership />

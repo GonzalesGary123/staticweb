@@ -24,6 +24,7 @@
           <NuxtLink to="/#membership" class="nav-link text-sm font-medium">MEMBERSHIP</NuxtLink>
           <NuxtLink to="/#testimonials" class="nav-link text-sm font-medium">LEADERBOARD</NuxtLink>
           <NuxtLink to="/#market" class="nav-link text-sm font-medium">MARKET</NuxtLink>
+          <NuxtLink to="/#market-status" class="nav-link text-sm font-medium">MARKET STATUS</NuxtLink>
           <NuxtLink to="/trade-plans" class="nav-link text-sm font-medium">TRADE PLANS</NuxtLink>
         </div>
 
@@ -75,6 +76,7 @@
           <NuxtLink to="/#membership" class="nav-link text-base font-medium py-2">MEMBERSHIP</NuxtLink>
           <NuxtLink to="/#testimonials" class="nav-link text-base font-medium py-2">LEADERBOARD</NuxtLink>
           <NuxtLink to="/#market" class="nav-link text-base font-medium py-2">MARKET</NuxtLink>
+          <NuxtLink to="/#market-status" class="nav-link text-base font-medium py-2">MARKET STATUS</NuxtLink>
           <NuxtLink to="/trade-plans" class="nav-link text-base font-medium py-2">TRADE PLANS</NuxtLink>
           
           <div class="pt-4 border-t border-orange-500/30">
