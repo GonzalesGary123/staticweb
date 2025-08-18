@@ -31,6 +31,7 @@ export { setInterval } from '#app/compat/interval';
 export { defineLazyHydrationComponent } from '#app/composables/lazy-hydration';
 export { useCrypto } from '../composables/useCrypto';
 export { useGameState } from '../composables/useGameState';
+export { useMarketStatus } from '../composables/useMarketStatus';
 export { useMobileMenu } from '../composables/useMobileMenu';
 export { useTheme } from '../composables/useTheme';
 export { useTradePlans } from '../composables/useTradePlans';

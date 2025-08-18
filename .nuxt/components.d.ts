@@ -23,6 +23,7 @@ interface _GlobalComponents {
     'GameDashboard': typeof import("../components/GameDashboard.vue")['default']
     'GameResults': typeof import("../components/GameResults.vue")['default']
     'LiveMarketData': typeof import("../components/LiveMarketData.vue")['default']
+    'MarketStatus': typeof import("../components/MarketStatus.vue")['default']
     'TradingInterface': typeof import("../components/TradingInterface.vue")['default']
     'NuxtWelcome': typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']
     'NuxtLayout': typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
@@ -59,6 +60,7 @@ interface _GlobalComponents {
     'LazyGameDashboard': LazyComponent<typeof import("../components/GameDashboard.vue")['default']>
     'LazyGameResults': LazyComponent<typeof import("../components/GameResults.vue")['default']>
     'LazyLiveMarketData': LazyComponent<typeof import("../components/LiveMarketData.vue")['default']>
+    'LazyMarketStatus': LazyComponent<typeof import("../components/MarketStatus.vue")['default']>
     'LazyTradingInterface': LazyComponent<typeof import("../components/TradingInterface.vue")['default']>
     'LazyNuxtWelcome': LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']>
     'LazyNuxtLayout': LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']>
@@ -101,6 +103,7 @@ export const CryptoTestimonials: typeof import("../components/CryptoTestimonials
 export const GameDashboard: typeof import("../components/GameDashboard.vue")['default']
 export const GameResults: typeof import("../components/GameResults.vue")['default']
 export const LiveMarketData: typeof import("../components/LiveMarketData.vue")['default']
+export const MarketStatus: typeof import("../components/MarketStatus.vue")['default']
 export const TradingInterface: typeof import("../components/TradingInterface.vue")['default']
 export const NuxtWelcome: typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']
 export const NuxtLayout: typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
@@ -137,6 +140,7 @@ export const LazyCryptoTestimonials: LazyComponent<typeof import("../components/
 export const LazyGameDashboard: LazyComponent<typeof import("../components/GameDashboard.vue")['default']>
 export const LazyGameResults: LazyComponent<typeof import("../components/GameResults.vue")['default']>
 export const LazyLiveMarketData: LazyComponent<typeof import("../components/LiveMarketData.vue")['default']>
+export const LazyMarketStatus: LazyComponent<typeof import("../components/MarketStatus.vue")['default']>
 export const LazyTradingInterface: LazyComponent<typeof import("../components/TradingInterface.vue")['default']>
 export const LazyNuxtWelcome: LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']>
 export const LazyNuxtLayout: LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']>
