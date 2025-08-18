@@ -112,6 +112,37 @@
         </div>
       </div>
 
+      <!-- GMT+8 Timezone Highlight -->
+      <div class="gaming-card p-6 mb-8 border-2 border-blue-500/50">
+        <h3 class="text-xl font-semibold mb-4 text-blue-400">🌏 GMT+8 Trading Hub</h3>
+        <p class="text-gray-300 mb-4 text-center">
+          The GMT+8 timezone is one of the most active trading regions globally, covering major financial centers in Asia.
+          This region is crucial for crypto trading as it bridges the gap between Asian and Western markets.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="text-center p-4 bg-blue-500/10 rounded-lg border border-blue-500/30">
+            <div class="text-2xl mb-2">🇸🇬</div>
+            <div class="font-semibold text-blue-400">Singapore</div>
+            <div class="text-sm text-gray-400">09:00 - 17:00</div>
+            <div class="text-xs text-blue-400 mt-1">Major Financial Hub</div>
+          </div>
+          
+          <div class="text-center p-4 bg-blue-500/10 rounded-lg border border-blue-500/30">
+            <div class="text-2xl mb-2">🇭🇰</div>
+            <div class="font-semibold text-blue-400">Hong Kong</div>
+            <div class="text-sm text-gray-400">09:30 - 16:00</div>
+            <div class="text-xs text-blue-400 mt-1">Asia's Wall Street</div>
+          </div>
+          
+          <div class="text-center p-4 bg-blue-500/10 rounded-lg border border-blue-500/30">
+            <div class="text-2xl mb-2">🇨🇳</div>
+            <div class="font-semibold text-blue-400">Shanghai</div>
+            <div class="text-sm text-gray-400">09:30 - 15:00</div>
+            <div class="text-xs text-blue-400 mt-1">World's 2nd Largest</div>
+          </div>
+        </div>
+      </div>
+
       <!-- Trading Session Info -->
       <div class="gaming-card p-6">
         <h3 class="text-xl font-semibold mb-4 text-gradient-primary">Trading Sessions</h3>
@@ -119,7 +150,7 @@
           <div class="text-center p-4 bg-gray-800/50 rounded-lg">
             <div class="text-2xl mb-2">🌅</div>
             <div class="font-semibold text-blue-400">Asian Session</div>
-            <div class="text-sm text-gray-400">Tokyo, Sydney</div>
+            <div class="text-sm text-gray-400">Singapore, Hong Kong, Shanghai, Tokyo, Sydney</div>
             <div class="text-xs text-gray-500 mt-1">00:00 - 09:00 UTC</div>
           </div>
           
@@ -142,6 +173,36 @@
             <div class="font-semibold text-purple-400">Crypto Session</div>
             <div class="text-sm text-gray-400">Global</div>
             <div class="text-xs text-gray-500 mt-1">24/7 Always Open</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Market Overlap Periods -->
+      <div class="gaming-card p-6 mb-8">
+        <h3 class="text-xl font-semibold mb-4 text-gradient-primary">🌍 Market Overlap Periods</h3>
+        <p class="text-gray-300 mb-4 text-center">
+          These are the most volatile and active trading periods when multiple markets are open simultaneously.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="text-center p-4 bg-green-500/10 rounded-lg border border-green-500/30">
+            <div class="text-2xl mb-2">🌅🌍</div>
+            <div class="font-semibold text-green-400">Asian-European</div>
+            <div class="text-sm text-gray-400">08:00 - 09:00 UTC</div>
+            <div class="text-xs text-green-400 mt-1">High Volatility</div>
+          </div>
+          
+          <div class="text-center p-4 bg-orange-500/10 rounded-lg border border-orange-500/30">
+            <div class="text-2xl mb-2">🌍🌎</div>
+            <div class="font-semibold text-orange-400">European-American</div>
+            <div class="text-sm text-gray-400">13:30 - 16:30 UTC</div>
+            <div class="text-xs text-orange-400 mt-1">Peak Activity</div>
+          </div>
+          
+          <div class="text-center p-4 bg-blue-500/10 rounded-lg border border-blue-500/30">
+            <div class="text-2xl mb-2">🌅🌎</div>
+            <div class="font-semibold text-blue-400">Asian-American</div>
+            <div class="text-sm text-gray-400">13:30 - 15:00 UTC</div>
+            <div class="text-xs text-blue-400 mt-1">Cross-Pacific</div>
           </div>
         </div>
       </div>

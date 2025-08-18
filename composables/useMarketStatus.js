@@ -4,6 +4,45 @@ export function useMarketStatus() {
   // Market data
   const markets = ref([
     {
+      id: 'singapore',
+      name: 'Singapore',
+      country: 'Singapore',
+      timezone: 'Asia/Singapore',
+      openTime: '09:00',
+      closeTime: '17:00',
+      isOpen: false,
+      currentTime: null,
+      countdown: null,
+      offset: 8, // UTC+8
+      icon: '🇸🇬'
+    },
+    {
+      id: 'hongkong',
+      name: 'Hong Kong',
+      country: 'Hong Kong',
+      timezone: 'Asia/Hong_Kong',
+      openTime: '09:30',
+      closeTime: '16:00',
+      isOpen: false,
+      currentTime: null,
+      countdown: null,
+      offset: 8, // UTC+8
+      icon: '🇭🇰'
+    },
+    {
+      id: 'shanghai',
+      name: 'Shanghai',
+      country: 'China',
+      timezone: 'Asia/Shanghai',
+      openTime: '09:30',
+      closeTime: '15:00',
+      isOpen: false,
+      currentTime: null,
+      countdown: null,
+      offset: 8, // UTC+8
+      icon: '🇨🇳'
+    },
+    {
       id: 'sydney',
       name: 'Sydney',
       country: 'Australia',
