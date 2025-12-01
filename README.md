@@ -1,191 +1,226 @@
-# CryptoGroup - Premium Crypto Community Website
+# ⚔️ Legends of Ymir Account Marketplace
 
-A modern, responsive website built with Nuxt.js and Tailwind CSS that showcases a premium crypto community platform.
+A modern, user-friendly web application for buying and selling Legends of Ymir game accounts. Built with Nuxt 3, Vue 3, Tailwind CSS, and Supabase.
 
-## 🚀 Features
+## ✨ Features
 
-### Core Components
-- **Hero Section** - Eye-catching introduction with community stats and preview cards
-- **About Section** - Detailed information about the crypto group and community benefits
-- **Features Section** - Comprehensive overview of exclusive crypto group benefits
-- **Membership Tiers** - Three-tier membership system (Free, Premium, VIP)
-- **Testimonials** - Real member success stories and community impact metrics
-- **Live Market Data** - Real-time cryptocurrency market information
-- **Interactive Demo** - Hands-on crypto trading simulation
+- 🎮 **Beautiful UI/UX** - Modern, friendly design with smooth animations and dark/light mode
+- 📝 **Easy Listing Creation** - Simple form to post account listings with images
+- 🔍 **Browse Listings** - View all available accounts in a beautiful card layout
+- 🔐 **User Authentication** - Register and login system
+- 💾 **Persistent Storage** - Uses Supabase PostgreSQL database (with in-memory fallback)
+- 📸 **Image Upload** - Upload multiple screenshots of your account
+- ⚔️ **Class Selection** - Choose from Archer, Skald, Volva, or Warlord
+- 🌐 **Responsive Design** - Works perfectly on desktop, tablet, and mobile
 
-### Key Features
-- **Exclusive Community Access** - Private Discord, Telegram, and forum access
-- **Expert Insights** - Daily market analysis and trading signals
-- **Educational Resources** - Comprehensive learning materials and webinars
-- **Networking Events** - Local meetups and virtual conferences
-- **Early Access Opportunities** - Presales, IDOs, and private sales
-- **24/7 Support** - Round-the-clock community moderation and assistance
-
-### Membership Tiers
-
-#### 🆓 Free Member
-- Access to public channels
-- Basic market updates
-- Community forum access
-- Weekly newsletter
-
-#### ⭐ Premium Member ($29/month)
-- Everything in Free
-- Premium Discord channels
-- Daily trading signals
-- Expert Q&A sessions
-- Portfolio tracking tools
-- Priority support
-
-#### 💎 VIP Member ($99/month)
-- Everything in Premium
-- 1-on-1 expert consultations
-- Early access to presales
-- Private investment group
-- Exclusive networking events
-- 24/7 VIP support
-
-## 🛠️ Technology Stack
-
-- **Frontend Framework**: Nuxt.js 3
-- **Styling**: Tailwind CSS
-- **Build Tool**: Vite
-- **Package Manager**: npm
-- **Deployment**: Static site generation
-
-## 📱 Responsive Design
-
-The website is fully responsive and optimized for:
-- Desktop computers
-- Tablets
-- Mobile devices
-- Various screen sizes and orientations
-
-## 🎨 Design Features
-
-- **Modern Glass Morphism** - Beautiful translucent UI elements
-- **Gradient Accents** - Eye-catching color schemes
-- **Smooth Animations** - Engaging hover effects and transitions
-- **Dark Theme** - Easy on the eyes with toggle functionality
-- **Interactive Elements** - Hover states and micro-interactions
-
-## 🚀 Getting Started
+## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js 18+ 
-- npm or yarn
+
+- Node.js 18+ installed
+- npm, yarn, pnpm, or bun
 
 ### Installation
-```bash
-# Clone the repository
-git clone <repository-url>
-cd cryptonuxt
 
-# Install dependencies
+1. Clone the repository:
+```bash
+git clone <your-repo-url>
+cd middleman-webapp
+```
+
+2. Install dependencies:
+```bash
 npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
 ```
 
-### Development
+3. (Optional) Set up Supabase database (see Database Setup below)
+
+4. Start the development server:
 ```bash
-# Start development server
 npm run dev
-
-# The website will be available at http://localhost:3000
 ```
 
-### Building
-```bash
-# Build for production
-npm run build
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-# The built files will be in the .output directory
+## 🗄️ Database Setup
+
+This app uses **Supabase** (PostgreSQL) for persistent data storage. The app will work without a database (using in-memory storage), but data will be lost when the server restarts.
+
+### Option 1: Supabase (Recommended)
+
+**Supabase** is a free, open-source Firebase alternative with PostgreSQL database, authentication, and real-time features.
+
+#### Steps:
+
+1. **Create a Supabase account** at [https://supabase.com](https://supabase.com)
+
+2. **Create a new project**:
+   - Go to your dashboard
+   - Click "New Project"
+   - Choose a name, database password, and region
+   - Wait for the project to be created (takes ~2 minutes)
+
+3. **Get your credentials**:
+   - Go to Project Settings → API
+   - Copy your "Project URL" (SUPABASE_URL)
+   - Copy your "anon public" key (SUPABASE_ANON_KEY)
+
+4. **Set up the database schema**:
+   - Go to SQL Editor in your Supabase dashboard
+   - Copy and paste the contents of `database/schema.sql`
+   - Click "Run" to execute the SQL
+
+5. **Configure environment variables**:
+   - Create a `.env` file in the root directory:
+   ```env
+   SUPABASE_URL=your_supabase_project_url
+   SUPABASE_ANON_KEY=your_supabase_anon_key
+   ```
+   - Replace with your actual values from step 3
+
+6. **Restart your development server**:
+   ```bash
+   npm run dev
+   ```
+
+### Option 2: Other Database Options
+
+If you prefer a different database, here are some alternatives:
+
+#### MongoDB Atlas
+- Free tier: 512MB storage
+- NoSQL database
+- Easy to set up
+- Would require updating `server/utils/db.ts` to use MongoDB driver
+
+#### PlanetScale
+- Free tier: 5GB storage
+- MySQL-compatible
+- Serverless scaling
+- Would require updating schema to MySQL syntax
+
+#### Firebase Firestore
+- Free tier: 1GB storage, 50K reads/day
+- NoSQL database
+- Real-time updates
+- Would require Firebase SDK integration
+
+#### Railway / Render PostgreSQL
+- Free tier available
+- Managed PostgreSQL
+- Would use same Supabase client (just change connection string)
+
+### Current Database Schema
+
+The app uses two main tables:
+
+- **users**: Stores user accounts (email, password)
+- **listings**: Stores account listings (nickname, server, growth power, price, images, etc.)
+
+See `database/schema.sql` for the complete schema.
+
+## 🛠️ Development
+
+### Project Structure
+
+```
+middleman-webapp/
+├── app/
+│   ├── app.vue          # Main application component
+│   └── assets/
+│       └── css/
+│           └── main.css # Tailwind CSS
+├── server/
+│   ├── api/
+│   │   ├── auth/        # Authentication endpoints
+│   │   └── listings.*    # Listing endpoints
+│   └── utils/
+│       ├── db.ts        # Database utilities
+│       ├── supabase.ts  # Supabase client
+│       ├── listingsStore.ts  # In-memory fallback
+│       └── usersStore.ts     # In-memory fallback
+├── database/
+│   └── schema.sql       # Database schema
+└── nuxt.config.ts       # Nuxt configuration
 ```
 
-## 📁 Project Structure
+### Tech Stack
 
-```
-├── components/           # Vue components
-│   ├── CryptoHeader.vue     # Navigation header
-│   ├── CryptoHero.vue       # Hero section
-│   ├── CryptoAbout.vue      # About section
-│   ├── CryptoFeatures.vue   # Features overview
-│   ├── CryptoMembership.vue # Membership tiers
-│   ├── CryptoTestimonials.vue # Member testimonials
-│   ├── LiveMarketData.vue   # Market data display
-│   ├── CryptoDemo.vue       # Interactive demo
-│   └── CryptoFooter.vue     # Footer section
-├── composables/         # Reusable logic
-├── assets/             # Static assets
-├── public/             # Public files
-└── app.vue             # Main application component
-```
+- **Framework**: Nuxt 3
+- **UI**: Vue 3 + Tailwind CSS 4
+- **Database**: Supabase (PostgreSQL)
+- **Language**: TypeScript
 
-## 🎯 Target Audience
+## 📝 Usage
 
-- **Crypto Beginners** - Looking to learn and get started
-- **Active Traders** - Seeking expert insights and signals
-- **Crypto Enthusiasts** - Wanting to join a community
-- **Investors** - Looking for early access opportunities
-- **Developers** - Interested in blockchain technology
+1. **Register/Login**: Click "Login / Register" to create an account
+2. **Post Listing**: Fill out the form with account details, upload images, and submit
+3. **Browse Listings**: View all available accounts in the "Browse Listings" tab
+4. **Contact Sellers**: Use the contact information provided in each listing
 
-## 🌟 Community Benefits
+## 🔒 Security
 
-- **10,000+ Active Members** from 50+ countries
-- **24/7 Support** and active moderation
-- **95% Member Satisfaction** rate
-- **$2.5M+ Total Profits** generated by members
-- **500+ Success Stories** from community members
-- **4.9/5 Average Rating** from members
+This application includes comprehensive security measures:
 
-## 📊 Performance
+✅ **Implemented Security Features:**
+- Password hashing with bcrypt (10 salt rounds)
+- Input validation and sanitization
+- Rate limiting (5 req/min for auth, 100 req/min for API)
+- Security headers (CSP, XSS Protection, etc.)
+- File upload validation (type, size limits)
+- SQL injection prevention (via Supabase)
+- Error handling that doesn't expose sensitive info
+- Row Level Security (RLS) policies
 
-- **Fast Loading** - Optimized for speed
-- **SEO Friendly** - Proper meta tags and structure
-- **Accessibility** - WCAG compliant design
-- **Mobile First** - Responsive design approach
+📖 **See [SECURITY.md](./SECURITY.md) for detailed security documentation**
 
-## 🔧 Customization
+⚠️ **Production Requirements:**
+1. Always use HTTPS in production
+2. Set environment variables securely
+3. Review and test RLS policies
+4. Use strong admin passwords
+5. Enable database backups
+6. Monitor for suspicious activity
 
-The website is built with modularity in mind:
-- Easy to modify colors and themes
-- Simple component structure
-- Configurable content sections
-- Flexible layout system
+📦 **See [DEPLOYMENT.md](./DEPLOYMENT.md) for production deployment guide**
 
-## 📈 Future Enhancements
+## 🚢 Deployment
 
-- User authentication system
-- Real-time chat integration
-- Advanced portfolio tracking
-- Mobile app development
-- API integration for live data
-- Multi-language support
+### Deploy to Vercel
 
-## 🤝 Contributing
+1. Push your code to GitHub
+2. Import project in Vercel
+3. Add environment variables (SUPABASE_URL, SUPABASE_ANON_KEY)
+4. Deploy!
 
-Contributions are welcome! Please feel free to submit pull requests or open issues for bugs and feature requests.
+### Deploy to Netlify
+
+1. Push your code to GitHub
+2. Create new site in Netlify
+3. Add environment variables
+4. Deploy!
+
+### Deploy to Railway / Render
+
+1. Connect your GitHub repository
+2. Add environment variables
+3. Deploy!
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+MIT
 
-## 📞 Contact
+## 🤝 Contributing
 
-For questions or support, please reach out through:
-- Website: [CryptoGroup Website]
-- Email: support@cryptogroup.com
-- Discord: [Discord Server Link]
-- Telegram: [Telegram Group Link]
+Contributions are welcome! Please feel free to submit a Pull Request.
 
----
+## 💡 Future Enhancements
 
-**Built with ❤️ for the crypto community**
+- [ ] Search and filter listings
+- [ ] User profiles and seller ratings
+- [ ] Favorite/bookmark listings
+- [ ] Email notifications
+- [ ] Payment integration
+- [ ] Admin dashboard
+- [ ] Image optimization and CDN
+- [ ] Real-time chat between buyers and sellers

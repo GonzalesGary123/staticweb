@@ -1,8 +1,7 @@
 {
-  "name": "cryptonuxt",
-  "version": "0.0.0",
-  "private": true,
+  "name": "nuxt-app",
   "type": "module",
+  "private": true,
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -10,14 +9,19 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
-  "devDependencies": {
-    "@nuxt/devtools": "latest",
-    "nuxt": "^3.10.0",
-    "tailwindcss": "^3.4.0",
-    "postcss": "^8.4.0",
-    "autoprefixer": "^10.4.0"
-  },
   "dependencies": {
-    "@nuxtjs/tailwindcss": "^6.10.0"
+    "@nuxtjs/supabase": "^2.0.1",
+    "@supabase/supabase-js": "^2.86.0",
+    "@tailwindcss/vite": "^4.1.17",
+    "bcrypt": "^6.0.0",
+    "nuxt": "^4.2.1",
+    "nuxt-auth-utils": "^0.5.25",
+    "tailwindcss": "^4.1.17",
+    "vue": "^3.5.25",
+    "vue-router": "^4.6.3"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "supabase": "^2.63.1"
   }
 }
